@@ -71,11 +71,11 @@ flowchart TD
   D --> E[ResourceManager.ProvideResource]
   E --> F{Operation 缓存命中}
   F -->|是| G[增加引用并返回 Handle]
-  F -->|否| H[创建 ProviderOperation 与依赖组]
-  H --> I[依赖就绪后 IResourceProvider.Provide]
-  I --> J[AssetBundleProvider 加载 Bundle]
-  J --> K[BundledAssetProvider 加载资产]
-  K --> L[Complete 更新已有 Handle 的状态与结果]
+  F -->|否| H[创建资产 ProviderOperation 与依赖组]
+  H --> J[依赖 Bundle 也通过 ProvideResource 请求]
+  J --> K[AssetBundleProvider.Provide 加载依赖 Bundle]
+  K --> I[依赖完成后 BundledAssetProvider.Provide 加载资产]
+  I --> L[Complete 更新已有 Handle 的状态与结果]
 ```
 
 Handle 在请求发起后就返回，不是在全部加载完成后才返回。Locator 在初始化/更新时由 Catalog 建立，不是每次 LoadAsset 都重新下载 Catalog；key 可以是地址、GUID、标签等，位置本身也有 InternalId，不是“只存 key 不存路径”。Catalog 不应概括成固定 JSON 布局，构建分组 Schema 也不能当成运行 Catalog 固定字段。
@@ -97,3 +97,5 @@ Addressables 1.21.21 默认 AssetBundleResource 释放分支调用 `UnloadAsync(
 构建时产生资源索引；运行时读取/初始化索引，不是扫描 Assets/Resources 目录重新发现文件。具体内存表结构、复杂度及资源数对应多少毫秒不能从概念 Dictionary 推定。旧回答的几十至几百毫秒没有实测依据。
 
 Addressables 内容更新涉及 Catalog、Hash、Bundle 与版本兼容，并非“只换 Catalog”；失败回退、重复请求、断线恢复、缓存和磁盘预算仍需应用层设计。相关入口 [[无Loading副本与预加载卡顿]]，包来源见 [[参考资料与版本边界#本轮技术核查依据]]。
+
+本轮复核结论见 [[知识点逐项核验]]；文档/源码版本依据见 [[技术核验来源]]。

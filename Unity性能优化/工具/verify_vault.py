@@ -152,6 +152,35 @@ for p in sorted(VAULT.glob('[0-9][0-9] *.md')):
         require(idx in edges[p], f'{p.name}: missing source backlink')
 for p in VAULT.glob('*.md'):
     require(any(p in dests for dests in edges.values()), f'{p.name}: orphan document')
+# Semantic review inventory: make omissions/stale heading anchors visible.
+# This verifies ledger coverage only; it cannot judge whether prose is true.
+audit_path = VAULT / '知识点逐项核验.md'
+relations_path = VAULT / '知识关联核验.md'
+if audit_path.exists() and relations_path.exists():
+    technical = [p for p in VAULT.glob('*.md')
+                 if (re.match(r'^\d{2} ', p.name) and not p.name.startswith('00'))
+                 or p.stem in {'建筑ID与连续数组索引','无Loading副本与预加载卡顿',
+                               'GPU Mask与铺地火焰','场景UI分辨率与RT带宽',
+                               'GPU Driven与虚拟化技术','UGUI架构与事件顺序','架构线程与代码实践'}]
+    expected = {p.stem + '#' + h for p in technical
+                for h in re.findall(r'^## (.+)$', body_and_blocks(p.read_text())[0], re.M)
+                if h != '关联'}
+    audit = audit_path.read_text()
+    reviewed = re.findall(r'^\|K\d{3}\|\[\[([^\]]+)\]\]\|', audit, re.M)
+    require(set(reviewed) == expected, 'knowledge audit missing/stale H2 entries')
+    require(len(reviewed) == len(set(reviewed)), 'knowledge audit repeats a section')
+    relations = relations_path.read_text()
+    pairs = re.findall(r'^\|R\d{3}\|\[\[([^\]]+)\]\] → \[\[([^\]]+)\]\]\|', relations, re.M)
+    actual_pairs = set()
+    for p in technical:
+        if re.match(r'^\d{2} ', p.name):
+            meta = yaml.safe_load(p.read_text().split('---')[1])
+            actual_pairs.update((p.stem, link[2:-2]) for link in meta.get('related', []))
+    require(set(pairs) == actual_pairs and len(pairs) == len(actual_pairs), 'related relation audit mismatch')
+    require(len(re.findall(r'^\|D\d{2}\|', relations, re.M)) == counts['mermaid_blocks'], 'diagram semantic audit coverage mismatch')
+    counts['reviewed_technical_sections'] = len(reviewed)
+    counts['reviewed_related_edges'] = len(pairs)
+
 # Explicit user protection: all tracked changes must stay within the knowledge base.
 changed = subprocess.check_output(['git','diff','--name-only','-z','490076d','--'], cwd=ROOT, text=True).split('\0')
 untracked = subprocess.check_output(['git','ls-files','--others','--exclude-standard','-z'], cwd=ROOT, text=True).split('\0')

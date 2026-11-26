@@ -81,3 +81,5 @@ RectTransform 宽度可写为 `parentWidth*(anchorMax.x-anchorMin.x)+sizeDelta.x
 CanvasGroup.interactable 主要影响遵守组状态的 Selectable，不等同阻止所有自定义 IPointerClickHandler；blocksRaycasts 参与 UI 射线过滤，不是禁用 Physics.Raycast 的开关。alpha=0 也不会自动让射线穿透。
 
 完整模块和源码定位见 [[UGUI架构与事件顺序]]，面试原问作为练习入口保留，不能将助手题库里每个反问当作用户已问或已掌握。
+
+本轮复核结论见 [[知识点逐项核验]]；文档/源码版本依据见 [[技术核验来源]]。

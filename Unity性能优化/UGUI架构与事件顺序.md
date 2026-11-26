@@ -16,7 +16,7 @@ related: []
 ```mermaid
 flowchart TD
   A[RectTransform 与 Layout 组件] --> B[布局标脏和布局重建]
-  B --> C[Graphic 顶点或材质更新]
+  B --> C[尺寸或内容改变时标脏 Graphic 顶点]
   C --> D[CanvasRenderer 提交 UI 几何]
   D --> E[Canvas 渲染与批次]
   F[输入设备] --> G[EventSystem 更新并驱动输入模块]
@@ -26,7 +26,7 @@ flowchart TD
 
 LayoutGroup 计算子元素的位置尺寸，Graphic 根据 RectTransform 与内容生成渲染网格；“只移动子节点”不能替代图片切片、填充、文本字形等几何变化。CanvasUpdateRegistry 管理重建队列，具体阶段需对照项目 uGUI 包源码。
 
-Mask 常利用模板机制与关联材质，RectMask2D 适用于矩形裁剪；不能简单认定某一个永远更快，需看层级、批次和覆盖区域。Selectable 负责选中与导航状态，显示组件和输入接口各有职责。
+Mask 常利用模板机制与关联材质，RectMask2D 适用于矩形裁剪；模板嵌套受可用 stencil 位限制，默认材质路径不是无限深层。不能简单认定某一个永远更快，需看层级、批次和覆盖区域。Selectable 负责选中与导航状态，显示组件和输入接口各有职责。
 
 事件多条件排序通常是词典序：先比较高优先字段，仅相等时比较下一字段。不同 Raycaster 的相机深度、排序优先级、层级和距离规则依源码实现而定；不复写一份无版本保证的“原样源码”。
 
@@ -79,7 +79,7 @@ flowchart TD
   I --> J[Move 再 Submit 或 Cancel]
 ```
 
-这是 StandaloneInputModule 的链，不能当成 InputSystemUIInputModule 的逐函数顺序。触摸与鼠标会优先于导航；导航可能因前序事件已消耗而跳过。Execute 发给目标上有效处理器；ExecuteHierarchy 沿父链找到第一个能处理的对象后停止，不是 DOM 向所有祖先冒泡。点击还要核对按下对象、释放对象与拖拽状态，不等于首个 Raycast 命中立即 onClick。
+这是 StandaloneInputModule 的链，不能当成 InputSystemUIInputModule 的逐函数顺序。EventSystem.Update 若本帧刚切换 InputModule，源码可跳过这次 Process；图中的连续箭头只描述已选定模块的主链，不保证每帧无条件调用。触摸与鼠标会优先于导航；导航可能因前序事件已消耗而跳过。Execute 发给目标上有效处理器；ExecuteHierarchy 沿父链找到第一个能处理的对象后停止，不是 DOM 向所有祖先冒泡。点击还要核对按下对象、释放对象与拖拽状态，不等于首个 Raycast 命中立即 onClick。
 
 ## Mask 与矩形裁剪（独立图）
 
@@ -117,3 +117,5 @@ ScrollRect 不是 Selectable；控件与 Graphic 常是组合关系。TextMeshPr
 List.Sort 本身不保证稳定；index 只是比较器显式的最终排序键，不是把算法变成 stable sort。也不存在所有场景固定的“UI Raycaster 高于 PhysicsRaycaster”。排序与显示优先级相关，但不能断言任意自定义 Raycaster 都严格匹配最终像素遮挡。
 
 核查源码：[uGUI 固定提交](https://github.com/Unity-Technologies/uGUI/tree/2f2223531d1e8177bcdf83c81f6c3aba1f9f14ab/com.unity.ugui/Runtime/UGUI)，涉及 EventSystem.cs、StandaloneInputModule.cs、Graphic.cs、CanvasUpdateRegistry.cs、LayoutRebuilder.cs。此提交含新版本功能，项目仍须对照其锁定的包；未在本地 Obsidian 或 Unity 运行。
+
+本轮复核结论见 [[知识点逐项核验]]；文档/源码版本依据见 [[技术核验来源]]。

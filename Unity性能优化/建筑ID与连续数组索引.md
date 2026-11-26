@@ -40,10 +40,12 @@ for (int i = chunk.Start; i < chunk.Start + chunk.Count; i++)
 
 ## 空间与加载意图
 
-离线以 Renderer Bounds 或约定的包围盒求重叠 Chunk。碰撞盒与视觉范围可能不同，选择哪一个要明确。大建筑可单独进大物体索引，避免覆盖过多块。
+离线以 Renderer Bounds 或约定的包围盒求重叠 Chunk。Renderer.bounds 是世界 AABB，Shader 位移、风动、SkinnedMesh 的包围体可能需要保守扩张；自定义 world bounds 不随 Transform 自动更新，也不会自动序列化到 Scene/Prefab。碰撞盒与视觉范围可能不同，选择哪一个要明确。大建筑可单独进大物体索引，避免覆盖过多块。
 
 60° 朝向扇区适合提高前方请求优先级，不应成为唯一保留条件。相机快速转向、倒退和网络校正时，周边保留圈与卸载滞回能避免突然缺物体。若用点积，60° 总夹角对应半角 30°；还要计入建筑 Bounds。
 
 静态导出 ID 需要版本与稳定性规则，不要把运行时 GetInstanceID 当跨构建稳定 ID。服务器逻辑 ID 与表现 ID 也应显式映射。
 
 关联：[[07 场景流式与地形]]、[[05 Addressables与AssetBundle]]。
+
+本轮复核结论见 [[知识点逐项核验]]；文档/源码版本依据见 [[技术核验来源]]。

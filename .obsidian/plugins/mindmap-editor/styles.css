@@ -1,0 +1,1001 @@
+.mindmap-view {
+  padding: 0;
+}
+
+.mindmap-scroller {
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  outline: none;
+  cursor: grab;
+  touch-action: none;
+}
+
+.mindmap-view .view-action.is-disabled {
+  opacity: 0.35;
+  pointer-events: none;
+}
+
+.mindmap-bookmark-menu-title {
+  display: flex;
+  gap: var(--size-4-4);
+  align-items: center;
+  width: 100%;
+}
+
+.mindmap-bookmark-menu-label {
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.mindmap-bookmark-remove {
+  display: inline-flex;
+  flex: none;
+  align-items: center;
+  justify-content: center;
+  width: var(--icon-s);
+  height: var(--icon-s);
+  margin-inline-start: auto;
+  color: var(--text-muted);
+  cursor: pointer;
+}
+
+.mindmap-bookmark-remove:hover {
+  color: var(--text-error);
+}
+
+.mindmap-bookmark-remove .svg-icon {
+  width: var(--icon-s);
+  height: var(--icon-s);
+}
+
+.mindmap-surface {
+  position: relative;
+  min-width: 100%;
+  min-height: 100%;
+}
+
+.mindmap-scroller.is-positioning .mindmap-surface {
+  visibility: hidden;
+}
+
+.mindmap-canvas {
+  position: absolute;
+  transform-origin: top left;
+}
+
+/* Frozen completed frame shown while the next async layout is measured. */
+.mindmap-render-snapshot {
+  pointer-events: none;
+  z-index: 1;
+}
+
+.mindmap-canvas.is-render-staging {
+  visibility: hidden;
+}
+
+.mindmap-edges {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.mindmap-empty {
+  padding: 24px;
+  color: var(--text-muted);
+}
+
+/* One rung of the level ladder, picked by data-depth below. Nearer the branch
+   is the louder end: a map is read from the trunk outwards, and nothing deeper
+   may draw louder than what holds it. Every rung differs from its neighbour in
+   fill, outline and size at once - one kind only ever sits beside its own, so
+   a channel two rungs share says nothing where it is needed.
+
+   The steps are the eye's, not the number line's. The fill is mixed in Oklab,
+   where an even run of percentages is an even run of lightness; --level-size
+   steps by about a twelfth each time, since what the eye reads is the ratio -
+   a flat 1px is a step at 12px and nothing at 18px. */
+.mindmap-node {
+  --level-fill: 70%;
+  --level-line: var(--branch-color);
+  --level-size: 5px;
+  --level-border: 2.5px;
+  --level-text: var(--text-normal);
+}
+
+.mindmap-node[data-depth='1'] {
+  --level-fill: 56%;
+  --level-line: color-mix(in oklab, var(--branch-color) 86%, transparent);
+  --level-size: 3.5px;
+  --level-border: 2px;
+}
+
+.mindmap-node[data-depth='2'] {
+  --level-fill: 42%;
+  --level-line: color-mix(in oklab, var(--branch-color) 72%, transparent);
+  --level-size: 2.2px;
+  --level-border: 1.75px;
+}
+
+.mindmap-node[data-depth='3'] {
+  --level-fill: 28%;
+  --level-line: color-mix(in oklab, var(--branch-color) 58%, transparent);
+  --level-size: 1.1px;
+  --level-border: 1.5px;
+}
+
+.mindmap-node[data-depth='4'] {
+  --level-fill: 14%;
+  --level-line: color-mix(in oklab, var(--branch-color) 44%, transparent);
+  --level-size: 0px;
+  --level-border: 1.25px;
+}
+
+/* The last rung the ladder steps down to. The fill goes, so the text takes the
+   muted color to carry the step the fill can no longer make. */
+.mindmap-node[data-depth='5'] {
+  --level-fill: 0%;
+  --level-line: color-mix(in oklab, var(--branch-color) 30%, transparent);
+  --level-size: -1px;
+  --level-border: 1px;
+  --level-text: var(--text-muted);
+}
+
+/* The tail, alternating with the rung above it: the same quiet, carried by the
+   fill instead of the outline, so a node never draws as its own parent. */
+.mindmap-node[data-depth='6'] {
+  --level-fill: 10%;
+  --level-line: transparent;
+  --level-size: -1px;
+  --level-border: 1px;
+  --level-text: var(--text-muted);
+}
+
+.mindmap-node {
+  --branch-color: var(--text-faint);
+
+  /* The families are calibrated in OKLCH before they arrive here. In
+     particular yellow stays lighter than blue: forcing both to one lightness
+     turns yellow into ochre. The level ladder still sets every fade step. */
+  --branch-fill: var(--branch-color);
+
+  position: absolute;
+
+  /* A column, so a node's own text is a block under its label rather than
+     another item beside it: a percentage flex-basis cannot make that row
+     break, since the node's width is what it is trying to be a share of. */
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  max-width: 300px;
+  padding: 4px 10px;
+  border: var(--level-border) solid var(--level-line);
+
+  /* A fixed radius, not a stadium: with the ends rounded to half the height, a
+     label that wraps to a third line turns the node into a lozenge. */
+  border-radius: 10px;
+
+  /* A tint, not just the outline: the border alone is too little color to read
+     a level off. One ladder for every kind of node - the heading's doubled
+     border is what says "heading", so the fill is free to say only "level". */
+  background: color-mix(
+    in oklab,
+    var(--branch-fill) var(--level-fill),
+    var(--background-primary)
+  );
+  color: var(--level-text);
+  font-size: calc(var(--font-ui-small) + var(--level-size));
+  cursor: pointer;
+  user-select: none;
+}
+
+/* Obsidian's normal text is deliberately soft. Strengthen it over colored
+   fills while leaving the two quiet final rungs muted. */
+.theme-light .mindmap-node:not([data-depth='5'], [data-depth='6']) {
+  --level-text: color-mix(in srgb, var(--text-normal) 55%, #000);
+}
+
+.theme-dark .mindmap-node:not([data-depth='5'], [data-depth='6']) {
+  --level-text: color-mix(in srgb, var(--text-normal) 55%, #fff);
+}
+
+/* Only while the background is actually being dragged, so the cursor answers
+   the press instead of staying on "you could grab this". */
+.mindmap-scroller.is-panning,
+.mindmap-scroller.is-panning .mindmap-node {
+  cursor: grabbing;
+}
+
+.mindmap-canvas.is-drag-active,
+.mindmap-canvas.is-drag-active .mindmap-node {
+  cursor: grabbing;
+}
+
+.mindmap-canvas.is-drag-active .mindmap-node {
+  transition: transform 80ms ease;
+}
+
+/* The label's own row: checkbox beside text, both centred on it. */
+.mindmap-node-head {
+  display: flex;
+  align-items: center;
+  gap: 3px; /* checkbox-to-text: about one half-width space */
+}
+
+.mindmap-node-text {
+  min-width: 16px;
+  overflow-wrap: anywhere;
+}
+
+.mindmap-task-metadata {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  min-height: 22px;
+  margin: 0;
+}
+
+.mindmap-task-metadata:not(.is-empty) {
+  margin-bottom: 4px;
+  padding-bottom: 4px;
+  border-bottom: 1px solid
+    color-mix(in srgb, var(--text-muted) 35%, transparent);
+}
+
+.mindmap-task-metadata.is-empty {
+  position: absolute;
+  right: auto;
+  bottom: calc(100% + 7px);
+  left: 50%;
+  min-height: 0;
+  gap: 1px;
+  margin: 0;
+  padding: 2px;
+  transform: translateX(-50%);
+}
+
+.mindmap-task-metadata .is-unset {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.mindmap-task-metadata .is-unset:focus-visible,
+.mindmap-node:hover .mindmap-task-metadata .is-unset {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.mindmap-task-metadata button {
+  appearance: none;
+  height: 22px;
+  margin: 0;
+  font-family: inherit;
+  cursor: pointer;
+}
+
+.mindmap-menu-has-submenu::after {
+  position: absolute;
+  right: 8px;
+  content: '›';
+}
+
+.menu.mindmap-menu-opens-left .menu-item {
+  padding-left: calc(var(--size-4-2) * 2);
+}
+
+.mindmap-menu-has-submenu.opens-left::after {
+  right: auto;
+  left: var(--size-4-2);
+  width: var(--size-4-1);
+  text-align: center;
+  content: '‹';
+}
+
+.mindmap-task-date-picker {
+  position: fixed;
+  z-index: var(--layer-menu, 1000);
+  width: 224px;
+  padding: 8px;
+  border: 1px solid var(--background-modifier-border);
+  border-radius: var(--radius-s);
+  background: var(--background-primary);
+  box-shadow: var(--shadow-s);
+}
+
+.mindmap-task-priority-picker {
+  position: fixed;
+  z-index: var(--layer-menu, 1000);
+  display: flex;
+  width: max-content;
+  flex-direction: column;
+  padding: 4px;
+  border: 1px solid var(--background-modifier-border);
+  border-radius: var(--radius-s);
+  background: var(--background-primary);
+  box-shadow: var(--shadow-s);
+}
+
+.mindmap-task-priority-picker button {
+  display: flex;
+  justify-content: flex-start;
+  margin: 0;
+  padding: 4px 8px;
+  border: 0;
+  background: transparent;
+  box-shadow: none;
+  text-align: left;
+}
+
+.mindmap-calendar-header {
+  display: grid;
+  grid-template-columns: 28px 1fr 28px;
+  align-items: center;
+  margin-bottom: 4px;
+}
+
+.mindmap-calendar-header button,
+.mindmap-calendar-grid button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 28px;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  box-shadow: none;
+}
+
+.mindmap-calendar-header button:hover,
+.mindmap-calendar-grid button:hover {
+  background: var(--background-modifier-hover);
+}
+
+.mindmap-task-priority-picker button:hover,
+.mindmap-task-priority-picker button.is-selected {
+  background: var(--background-modifier-hover);
+}
+
+.mindmap-calendar-month {
+  text-align: center;
+  font-weight: var(--font-semibold);
+}
+
+.mindmap-calendar-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 2px;
+}
+
+.mindmap-calendar-weekday {
+  color: var(--text-muted);
+  font-size: var(--font-ui-smaller);
+  text-align: center;
+}
+
+.mindmap-calendar-grid button.is-selected {
+  background: var(--interactive-accent);
+  color: var(--text-on-accent);
+}
+
+.mindmap-calendar-clear {
+  width: 100%;
+  margin: 6px 0 0;
+}
+
+.mindmap-task-priority-picker button:focus-visible,
+.mindmap-task-date-picker button:focus-visible {
+  outline: 2px solid var(--interactive-accent);
+  outline-offset: -2px;
+}
+
+.mindmap-task-metadata .mindmap-task-due-date {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: flex-start;
+  box-sizing: border-box;
+  flex: 0 0 108px;
+  width: 108px;
+  height: 22px;
+  gap: 0;
+  padding: 0;
+  border: 1px solid color-mix(in srgb, var(--text-muted) 45%, transparent);
+  border-radius: 3px;
+  background: var(--background-primary);
+  box-shadow: none;
+  color: var(--text-normal);
+  font-size: 0.75em;
+  font-weight: 600;
+  line-height: 16px;
+  white-space: nowrap;
+}
+
+.mindmap-task-due-date .svg-icon {
+  width: var(--checkbox-size, 16px);
+  height: var(--checkbox-size, 16px);
+}
+
+.mindmap-task-due-date.is-unset {
+  flex-basis: 28px;
+  width: 28px;
+  padding: 0;
+}
+
+.mindmap-task-metadata .mindmap-task-priority {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  width: 28px;
+  padding: 0;
+  border: 1px solid color-mix(in srgb, var(--text-muted) 45%, transparent);
+  border-radius: 3px;
+  background: var(--background-primary);
+  box-shadow: none;
+  color: var(--text-normal);
+  font-size: 1.1em;
+  font-weight: 800;
+  line-height: 1;
+}
+
+.mindmap-task-priority[data-priority='highest'] {
+  color: var(--color-red);
+}
+
+.mindmap-task-priority[data-priority='high'] {
+  color: var(--color-orange);
+}
+
+.mindmap-task-priority[data-priority='medium'] {
+  color: var(--interactive-accent);
+}
+
+.mindmap-task-priority[data-priority='low'] {
+  color: var(--color-blue);
+}
+
+.mindmap-task-priority > .svg-icon {
+  display: block;
+  width: var(--checkbox-size, 16px);
+  height: var(--checkbox-size, 16px);
+}
+
+.mindmap-task-due-date > span:first-child {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 26px;
+}
+
+.mindmap-task-priority:hover,
+.mindmap-task-priority:focus-visible,
+.mindmap-task-due-date:hover,
+.mindmap-task-due-date:focus-visible {
+  border-color: color-mix(in srgb, var(--text-muted) 45%, transparent);
+  background: var(--background-modifier-hover);
+}
+
+.mindmap-task-progress {
+  position: relative;
+  box-sizing: border-box;
+  height: 14px;
+  margin: 5px 2px 0;
+  overflow: hidden;
+
+  /* Near-white in dark themes and near-black in light ones: enough outline
+     on an unfilled node without turning the bar into a separate control. */
+  border: 1px solid color-mix(in srgb, var(--text-normal) 65%, transparent);
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--text-normal) 12%, transparent);
+}
+
+.mindmap-task-progress-bar {
+  width: var(--task-progress);
+  height: 100%;
+  border-radius: inherit;
+  background: var(--interactive-accent);
+  transition: width 120ms ease;
+}
+
+.mindmap-task-progress-label {
+  position: absolute;
+  inset: 0;
+  color: var(--text-normal);
+  font-size: 10px;
+  font-weight: 600;
+  line-height: 14px;
+  text-align: center;
+  text-shadow: 0 0 2px var(--background-primary);
+}
+
+/* Hover feedback in the node's own branch color, so it cannot be mistaken for
+   the accent ring that means "selected". Not while dragging: the drop-target
+   and invalid-target cues own the nodes then. */
+.mindmap-canvas:not(.is-drag-active) .mindmap-node:not(.is-selected):hover {
+  box-shadow: 0 0 0 2px color-mix(in srgb, var(--branch-color) 35%, transparent);
+}
+
+/* A heading is a different kind of node, not a louder one, so it says so in
+   the one channel the level ladder does not use: its corners. Square against
+   the list items' rounded ones reads across the whole canvas at once, and it
+   survives every rung - a doubled border only got thick and hard to read.
+   Dashed borders stay reserved for the drop-target state. */
+.mindmap-node.mindmap-node-heading {
+  /* Matched to the level rules' specificity, so no rung can round a heading's
+     corners off: the kind outlives every level. */
+  border-radius: 3px;
+  font-size: calc(var(--font-ui-small) + var(--level-size) + 3px);
+  font-weight: 600;
+}
+
+.mindmap-node-body {
+  margin-top: 4px;
+  margin-inline: 2px;
+
+  /* Some depth rungs have no tint, so a background-derived border disappears
+     there. Text color keeps the field equally legible on every rung. */
+  border: 1px solid color-mix(in srgb, var(--text-normal) 42%, transparent);
+  border-radius: 4px;
+  padding: 4px 6px;
+  background: var(--background-primary);
+  color: var(--text-normal);
+  font-size: var(--font-ui-smaller);
+  line-height: 1.4;
+  text-align: left;
+
+  /* Not the node's grab: this text answers to a double-click of its own. A
+     text caret would promise typing right here, which is the editor's job. */
+  cursor: pointer;
+}
+
+/* One element per source line, so a double-click knows which line it hit.
+   pre-wrap keeps indentation inside the text (a nested code block), which is
+   also what gets written back. An empty line is a paragraph break. */
+.mindmap-node-body-line {
+  /* An empty source line still needs a row for its mirrored caret. */
+  min-height: 1.4em;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+
+/* MarkdownRenderer emits a paragraph even for one source line. It remains
+   that line here rather than adding Reading View's paragraph spacing. */
+.mindmap-node-text > p,
+.mindmap-node-body-line > p {
+  display: inline;
+  margin: 0;
+}
+
+/* A source line is one map row even when MarkdownRenderer recognizes a block
+   construct inside it. Keep quote/list/code wrappers from adding Reading
+   View's vertical margins or their own block height. */
+.mindmap-node .mindmap-node-body-line blockquote,
+.mindmap-node .mindmap-node-body-line ul,
+.mindmap-node .mindmap-node-body-line ol,
+.mindmap-node .mindmap-node-body-line pre {
+  display: inline;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  line-height: inherit;
+  white-space: pre-wrap;
+}
+
+.mindmap-node .mindmap-node-body-line blockquote > p {
+  display: inline;
+  margin: 0;
+}
+
+.mindmap-node .mindmap-node-body-line blockquote::before,
+.mindmap-node .mindmap-node-body-line blockquote::after {
+  content: none;
+}
+
+.mindmap-node .mindmap-node-body-line blockquote::before {
+  display: inline;
+  content: '> ';
+}
+
+/* Image embeds in a node's own text use the same resource URL as Reading
+   View, but stay a preview rather than deciding the size of the whole map. */
+.mindmap-node-image {
+  display: block;
+  width: auto;
+  max-width: 100%;
+  max-height: 210px;
+  margin: 3px auto 0;
+  object-fit: contain;
+  cursor: pointer;
+}
+
+/* A line box, the same as the one the editor gives a blank line: opening an
+   edit must not change the height of what it replaces. */
+.mindmap-node-body-line:empty {
+  height: 1.4em;
+}
+
+/* Text picked up again after a child node; edited on its own, so spaced. The
+   editor takes the same spacing when it stands in for such a line. */
+.mindmap-node-body-line.is-run-start {
+  margin-top: 6px;
+  border-top: 1px dotted
+    color-mix(in srgb, var(--branch-color) 35%, transparent);
+  padding-top: 4px;
+}
+
+/* Lines light up one at a time, so it reads as "this line is the target". */
+.mindmap-node-body-line:not(.is-cursor-line):hover {
+  border-radius: 3px;
+  background: color-mix(in srgb, var(--text-normal) 8%, transparent);
+  color: var(--text-normal);
+}
+
+/* The line the editor's caret is on, and what Delete acts on: a selection, so
+   it is filled like one. The node keeps its ring around it. */
+.mindmap-node-body-line.is-cursor-line {
+  border-radius: 3px;
+  background: color-mix(in srgb, var(--interactive-accent) 20%, transparent);
+  color: var(--text-normal);
+}
+
+/* The keyboard remains in Obsidian's editor; this caret only mirrors where
+   its next character will appear, so the map never owns or writes the text. */
+.mindmap-node-body-line.is-mirror-editing {
+  color: var(--text-normal);
+}
+
+.mindmap-mirrored-caret {
+  display: inline-block;
+  height: 1em;
+  margin-inline: -1px 0;
+  border-inline-start: 2px solid var(--interactive-accent);
+  vertical-align: -0.15em;
+  animation: mindmap-mirrored-caret 1s steps(1) infinite;
+}
+
+@keyframes mindmap-mirrored-caret {
+  50% {
+    opacity: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mindmap-mirrored-caret {
+    animation: none;
+  }
+}
+
+/* Collapse handle: grey chrome, so the branch colors stay the nodes'. The
+   view positions it; translate only centers it on the node. */
+.mindmap-collapse {
+  position: absolute;
+  z-index: 1;
+  transform: translateY(-50%);
+  min-width: 18px;
+  padding: 0 4px;
+  border: 1px solid var(--text-faint);
+  border-radius: 999px;
+  background: var(--background-primary);
+  color: var(--text-muted);
+  font-size: var(--font-ui-smaller);
+  line-height: 1.5;
+  text-align: center;
+  cursor: pointer;
+  user-select: none;
+}
+
+/* The text handle rides the node's top-right corner instead of the side, so a
+   node with children can carry it next to its branch handle - smaller, since
+   two same-size chips on one corner read as clutter. */
+.mindmap-collapse.is-body {
+  transform: translate(-50%, -50%);
+
+  /* Under the branch handle, so a contested pixel goes to the branch: this
+     one can be reached from anywhere along the node's top. */
+  z-index: 0;
+  min-width: 16px;
+  padding: 0;
+  line-height: 16px;
+  opacity: 0;
+
+  /* Invisible means gone: left clickable it would swallow presses aimed at
+     the node's corner. */
+  pointer-events: none;
+  transition: opacity 80ms ease;
+}
+
+/* Shown on the node it belongs to - and pinned while the text is folded, the
+   only thing left saying that the node has any. */
+.mindmap-collapse.is-body.is-visible,
+.mindmap-collapse.is-body.is-collapsed {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.mindmap-collapse.is-body.is-collapsed {
+  border-color: var(--branch-color, var(--text-faint));
+}
+
+/* Mirrors the text-fold handle without changing that existing control. */
+.mindmap-bookmark-mark {
+  position: absolute;
+  z-index: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 16px;
+  height: 16px;
+  transform: translate(-50%, -50%);
+  border: 1px solid var(--color-yellow);
+  border-radius: 999px;
+  background: var(--color-yellow);
+  color: var(--text-normal);
+  box-shadow: 0 0 0 2px var(--background-primary);
+  pointer-events: none;
+}
+
+.theme-dark .mindmap-bookmark-mark {
+  color: var(--background-primary);
+}
+
+.mindmap-bookmark-mark .svg-icon {
+  width: 11px;
+  height: 11px;
+}
+
+/* Hover stays grey too: the branch color is not a hover cue here. */
+.mindmap-collapse:hover {
+  border-color: var(--text-muted);
+  color: var(--text-normal);
+}
+
+/* The only branch color on a handle, so color means "folded". A tint, not a
+   fill: a control must stay quieter than the nodes it hangs between. */
+.mindmap-collapse.is-collapsed {
+  border-color: var(--branch-color, var(--text-faint));
+  background: color-mix(
+    in srgb,
+    var(--branch-color, var(--text-faint)) 20%,
+    var(--background-primary)
+  );
+  color: var(--text-normal);
+}
+
+/* A header button whose whole subject is switched off. */
+.mindmap-view .is-hidden,
+.view-header .is-hidden {
+  display: none;
+}
+
+/* Read-only "✓ n done" node standing in for hidden completed tasks. */
+.mindmap-node-summary {
+  border-style: dotted;
+  color: var(--level-text);
+}
+
+.mindmap-node.is-selected {
+  box-shadow: 0 0 0 2px var(--interactive-accent);
+}
+
+.mindmap-node-actions {
+  position: absolute;
+  bottom: calc(100% + 7px);
+  left: 50%;
+  z-index: 10;
+  display: none;
+  align-items: center;
+  gap: 1px;
+  padding: 2px;
+  border: 1px solid var(--background-modifier-border);
+  border-radius: var(--radius-s);
+  background: var(--background-primary);
+  box-shadow: var(--shadow-s);
+  transform: translateX(-50%);
+}
+
+.mindmap-node-actions::after {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  height: 8px;
+  content: '';
+}
+
+.mindmap-canvas:not(.is-mobile, .is-inline-editing)
+  .mindmap-node.is-actions-hovered::before {
+  position: absolute;
+  right: 0;
+  bottom: 100%;
+  left: 0;
+  height: 8px;
+  content: '';
+}
+
+.mindmap-task-metadata.is-empty.mindmap-node-actions .is-unset {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.mindmap-canvas:not(.is-mobile, .is-inline-editing)
+  .mindmap-node:is(.is-actions-hovered, :focus-within)
+  > .mindmap-node-actions,
+.mindmap-canvas.is-mobile:not(.is-inline-editing)
+  .mindmap-node.is-actions-visible
+  > .mindmap-node-actions {
+  display: flex;
+}
+
+.mindmap-node-actions > .mindmap-node-action {
+  appearance: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  flex: 0 0 24px;
+  width: 24px;
+  min-width: 24px;
+  height: 24px;
+  margin: 0;
+  padding: 3px;
+  border: 0;
+  border-radius: var(--radius-s);
+  background: transparent;
+  color: var(--text-muted);
+  box-shadow: none;
+  font-size: inherit;
+  font-weight: normal;
+  line-height: normal;
+  cursor: pointer;
+}
+
+.mindmap-node-actions > .mindmap-node-action:hover,
+.mindmap-node-actions > .mindmap-node-action:focus-visible {
+  color: var(--text-normal);
+  background: transparent;
+}
+
+.mindmap-node-action svg {
+  width: 14px;
+  height: 14px;
+}
+
+.mindmap-node.is-drop-target {
+  box-shadow: 0 0 0 2px var(--interactive-accent);
+  border-style: dashed;
+}
+
+.mindmap-node.is-dragging {
+  opacity: 0.4;
+}
+
+/* Movable nodes show a grab cursor; the root (not movable) keeps pointer. */
+.mindmap-node.is-draggable {
+  cursor: grab;
+}
+
+/* While dragging, nodes that cannot accept the drop are dimmed. */
+.mindmap-canvas.is-drag-active .mindmap-node.is-invalid-target {
+  opacity: 0.35;
+  filter: grayscale(60%);
+}
+
+/* Sibling-reorder drop slot: an insertion bar in the gap, while the anchor
+   node nudges aside to visually make room. */
+.mindmap-drop-indicator {
+  position: absolute;
+  height: 4px;
+  border-radius: 2px;
+  background: var(--interactive-accent);
+  pointer-events: none;
+  z-index: 9;
+}
+
+.mindmap-node.is-shift-down {
+  transform: translateY(6px);
+}
+
+.mindmap-node.is-shift-up {
+  transform: translateY(-6px);
+}
+
+/* Page-coloured shadows keep a theme-coloured link legible on every fill. */
+.mindmap-node .mindmap-link {
+  color: var(--link-color, var(--interactive-accent));
+  font-weight: 600;
+  text-shadow:
+    -1px 0 0 var(--background-primary),
+    1px 0 0 var(--background-primary),
+    0 -1px 0 var(--background-primary),
+    0 1px 0 var(--background-primary);
+  cursor: pointer;
+}
+
+.mindmap-node.is-done .mindmap-node-text {
+  text-decoration: line-through;
+}
+
+/* The note itself: what every branch hangs off, so it is the largest thing on
+   the canvas. Square, like the headings: a file is the outline's top, not an
+   item in it. It says that with a doubled border and no fill at all - it is
+   one node and it is off the ladder, so it takes none of the fill range the
+   rungs have to share, and the accent it is drawn in is not a level of
+   anything. */
+.mindmap-node.mindmap-node-root {
+  border: 4px double var(--interactive-accent);
+  border-radius: 3px;
+  background: var(--background-primary);
+  font-size: calc(var(--font-ui-small) + 9px);
+  font-weight: 600;
+}
+
+/* The node itself shows a grab cursor; the checkbox is a click target, so
+   it advertises that on hover with a pointer, a slight grow, and an accent
+   ring.
+
+   A fill in the accent's own hue swallows both states of the box, so it stands
+   on a plate of the page's background - and is outlined in the text color, for
+   the rungs whose fill is gone and the plate with it. */
+.mindmap-node input.mindmap-checkbox {
+  --plate: 2px;
+
+  /* The plate stands outside the box, so Obsidian's own 6px starts past it. */
+  margin-inline: var(--plate) calc(6px + var(--plate));
+  flex-shrink: 0;
+  border-color: var(--text-normal);
+  background-color: var(--background-primary);
+  box-shadow: 0 0 0 var(--plate) var(--background-primary);
+  cursor: pointer;
+  transition:
+    transform 80ms ease,
+    box-shadow 80ms ease;
+}
+
+/* As specific as Obsidian's `:checked`, and later, so the accent is written
+   again or a ticked box comes out empty. */
+.mindmap-node input.mindmap-checkbox:checked {
+  border-color: var(--checkbox-color, var(--interactive-accent));
+  background-color: var(--checkbox-color, var(--interactive-accent));
+}
+
+/* The accent ring goes outside the plate, so hover adds to what says "task"
+   rather than painting over it. */
+.mindmap-node input.mindmap-checkbox:hover {
+  transform: scale(1.15);
+  border-color: var(--interactive-accent);
+  box-shadow:
+    0 0 0 var(--plate) var(--background-primary),
+    0 0 0 calc(var(--plate) + 2px)
+      color-mix(in srgb, var(--interactive-accent) 30%, transparent);
+}
+
+/* Inline editor for a node's label: a contenteditable span sharing
+   .mindmap-node-text styles, so the node is the same size viewing and
+   editing. */
+.mindmap-edit-input {
+  outline: none;
+  white-space: pre-wrap;
+
+  /* As the lines it replaces wrap, so a long word leaves the height alone. */
+  overflow-wrap: anywhere;
+
+  /* Exactly the line box the drawn text has: anything else moves the node as
+     the edit opens. Empty still keeps its line, so the node does not jump. */
+  min-height: 1lh;
+  cursor: text;
+  user-select: text;
+}
+
+/* A source pane's precise mark, excluding the line's structural indentation. */
+::highlight(mindmap-line) {
+  /* Obsidian's own flash colour, spelled out: a highlight pseudo-element does
+     not inherit the theme's custom properties, so var() here paints nothing. */
+  background-color: rgb(255 208 0 / 40%);
+}
+
+/* Fallback for decorated source lines, and the mark used in reading view. */
+.mindmap-line-highlight {
+  border-radius: 3px;
+  background-color: rgb(255 208 0 / 40%);
+}

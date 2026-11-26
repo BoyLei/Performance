@@ -83,3 +83,19 @@ CanvasGroup.interactable 主要影响遵守组状态的 Selectable，不等同�
 完整模块和源码定位见 [[UGUI架构与事件顺序]]，面试原问作为练习入口保留，不能将助手题库里每个反问当作用户已问或已掌握。
 
 本轮复核结论见 [[知识点逐项核验]]；文档/源码版本依据见 [[技术核验来源]]。
+
+### Q072：普通业务数据的多条件排序
+
+以下只是字典序规则示例，不是 EventSystem 源码比较器：优先级降序、距离升序、唯一序号升序。`CompareTo` 避免用相减比较整数时溢出；距离应预先保证有限，序号唯一才能得到确定的同键顺序。`List.Sort` 本身不稳定，不应依赖输入顺序保留相同键的次序。
+
+```csharp
+items.Sort((a, b) =>
+{
+    int c = b.Priority.CompareTo(a.Priority);
+    if (c != 0) return c;
+    c = a.Distance.CompareTo(b.Distance);
+    return c != 0 ? c : a.Sequence.CompareTo(b.Sequence);
+});
+```
+
+示例中的字段是业务约定，未作为完整 Unity 脚本编译。UGUI 的 RaycastResult 仍须按固定版本源码规则理解，不能套用这里的三个字段。

@@ -37,6 +37,20 @@ RT 没释放表示资源还占用内存，并不自动触发绘制；Camera 是�
 
 ## Bloom与移动GPU
 
+### Q027：不止 Bloom 的后处理
+
+后处理通常由 CPU 配置参数/提交，由 GPU 执行像素处理；体积混合等 CPU 开销也应测量。URP14 中不要把每种效果都理解成一个独立全屏 Pass，管线可能合并处理。
+
+|效果|输入与目的|重点成本/边界|
+|---|---|---|
+|Tonemapping|HDR 场景颜色映射到显示范围|不是简单改变分辨率；与曝光、颜色空间一起检查|
+|Color Adjustments / Grading|颜色变换，可能使用 LUT|不能用滤镜名字推断 Pass 数|
+|Depth of Field|场景色与深度，模拟焦外模糊|分辨率、采样与模式改变带宽/画质|
+|Vignette|按屏幕位置调整边缘颜色|常可合入其他处理，不等同多次 Blit|
+|SSAO|深度/法线估计屏幕空间遮蔽|URP14 是 Renderer Feature；法线来源与预通道也有代价|
+
+[URP14 后处理入口](https://docs.unity3d.com/Packages/com.unity.render-pipelines.universal@14.0/manual/integration-with-post-processing.html)、[DoF](https://docs.unity3d.com/Packages/com.unity.render-pipelines.universal@14.0/manual/post-processing-depth-of-field.html)、[Tonemapping](https://docs.unity3d.com/Packages/com.unity.render-pipelines.universal@14.0/manual/post-processing-tonemapping.html)、[SSAO](https://docs.unity3d.com/Packages/com.unity.render-pipelines.universal@14.0/manual/post-processing-ssao.html)。未来对 Motion Blur 等效果应按实际包版本核实输入与运动矢量支持，不能从其他管线照搬。
+
 Bloom 常先提亮区再逐级降采样、模糊、逐级升采样合成。降低分辨率能降低像素处理量。移动 Tile GPU 可在片上处理部分数据，但 Pass 间是否需要 Load/Store 取决于附件与依赖。RenderGraph 能基于显式资源依赖管理生命周期、复用和裁剪，不保证自动消除全部带宽成本。
 
 关联：[[01 GPU与渲染]]、[[08 UGUI与交互]]、[[04 纹理与资源]]。

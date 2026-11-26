@@ -1,0 +1,278 @@
+{
+  "Unity性能优化/00 知识库首页.md": {
+    "sha256": "62f32e3520aff7bfdcddf874e3a2305fa8e84eb23a469724ce3f4ce1695bd7e9",
+    "bytes": 1952
+  },
+  "Unity性能优化/01 GPU与渲染.md": {
+    "sha256": "eacbf03fcc11602ebedc23ec3cd358690096ea1111258815e20e8775d76573dd",
+    "bytes": 3430
+  },
+  "Unity性能优化/02 CPU与调度.md": {
+    "sha256": "7c62d48ef837b3691abffed7a625cfdf54b81d07992f27c68f33498792ea30db",
+    "bytes": 2195
+  },
+  "Unity性能优化/03 内存与GC.md": {
+    "sha256": "8c73fc4a2a2e07974b7173775f4e9df96aebed0db058f9f7ed93d4e9c527316b",
+    "bytes": 2155
+  },
+  "Unity性能优化/04 纹理与资源.md": {
+    "sha256": "dbd124ad15da8277b6de12c55eb9019158fd807487fe053c58414aed84eb6312",
+    "bytes": 2113
+  },
+  "Unity性能优化/05 Addressables与AssetBundle.md": {
+    "sha256": "9a75c8c661b2a03e9244a07e8bd302208b03d4204fc493c8e632e0a8e3cef687",
+    "bytes": 2593
+  },
+  "Unity性能优化/06 异步与生命周期.md": {
+    "sha256": "aab333d1336ae99627ab0bf67379b2b75a6ee90671d27c247e6ae9a6ae4f25d2",
+    "bytes": 2753
+  },
+  "Unity性能优化/07 场景流式与地形.md": {
+    "sha256": "a8d561f6d911eb3d729e74b691f8c4b1896401f8c6fef852aaaf04c5bb4fb8d2",
+    "bytes": 3253
+  },
+  "Unity性能优化/08 UGUI与交互.md": {
+    "sha256": "35a7f707d8ba8ea84c23bb24742d6686e0b6268108b1a44493985e854fbe816b",
+    "bytes": 2843
+  },
+  "Unity性能优化/09 角色动画与特效.md": {
+    "sha256": "dc444fd646f8ad2b7d0465f09feab25212d4f6c2a03ae106011cbf0b78ab08de",
+    "bytes": 2120
+  },
+  "Unity性能优化/10 MMO架构与网络.md": {
+    "sha256": "f7236e9bf10013a24283f88e54c38c5628a6c00f49aa451c833391fba0c1b08d",
+    "bytes": 2036
+  },
+  "Unity性能优化/GPU Driven与虚拟化技术.md": {
+    "sha256": "85b20625068c9c720e9c3f982a34077463ae09bafc978b286602939e0fe782c7",
+    "bytes": 2236
+  },
+  "Unity性能优化/GPU Mask与铺地火焰.md": {
+    "sha256": "441d4b88f9816f5d7c02edeaad0e2549b9d96c4ba6543b47a9d15b7609654a46",
+    "bytes": 2215
+  },
+  "Unity性能优化/UGUI架构与事件顺序.md": {
+    "sha256": "8f0b8084915900199ff5b71c76eb17756faa8cffe4c21ac69c72ddd5f89caa88",
+    "bytes": 1624
+  },
+  "Unity性能优化/任务总览.md": {
+    "sha256": "0e79268c1780bd457e36e8fd8a9836fa32bff50d97113d82aeadcc70c844251a",
+    "bytes": 1210
+  },
+  "Unity性能优化/历史检索与整理说明.md": {
+    "sha256": "6acfea4cfe7de6bf8b0166274eed4c3a392db74cf81c5b7f432cdc42292d0c65",
+    "bytes": 2657
+  },
+  "Unity性能优化/历史问题索引.md": {
+    "sha256": "fd7aaaff6e99d1e7c335414faf247dc613ed49140be95be4c54610ba1773b17b",
+    "bytes": 19422
+  },
+  "Unity性能优化/参考资料与版本边界.md": {
+    "sha256": "26104be89c09f078b4e08cccc3b8006dae7f0cff5f47f271f47847d6948cc7cb",
+    "bytes": 2548
+  },
+  "Unity性能优化/因果与执行流程.md": {
+    "sha256": "f13c2c2a6480804877cedeecc0e10e246998a3481f1f014a67b46b69761e95ea",
+    "bytes": 1562
+  },
+  "Unity性能优化/场景UI分辨率与RT带宽.md": {
+    "sha256": "51eee089046e02564d9a19329dba3e9cfea026a62e36ea87bba16046096ddaf9",
+    "bytes": 2287
+  },
+  "Unity性能优化/学习任务脑图.md": {
+    "sha256": "e1fc63fae4e147bc677f6da85f16dd81d5197b5d828a4e6f342a83bdb750d099",
+    "bytes": 9664
+  },
+  "Unity性能优化/建筑ID与连续数组索引.md": {
+    "sha256": "6c6df7155b324c6d5bbf3172e51ea21cc009c25c48bc30bed6606fec7ddeb12e",
+    "bytes": 2147
+  },
+  "Unity性能优化/文件核验报告.md": {
+    "sha256": "e353497f40b0ad30255de7b4ff2399c34a9492333be266178e1d0a239ae95fa0",
+    "bytes": 1197
+  },
+  "Unity性能优化/无Loading副本与预加载卡顿.md": {
+    "sha256": "ce4a11d0d4a2c045d2a5e1218c78f684d6717326eca8f98c9b1601d69bf125a9",
+    "bytes": 2025
+  },
+  "Unity性能优化/未讨论与待核实路线.md": {
+    "sha256": "52cf92e12a9b14463ef21cf24aa63b06dc5d4c3ef9c6a95546ace8643b632e42",
+    "bytes": 2663
+  },
+  "Unity性能优化/架构线程与代码实践.md": {
+    "sha256": "e6f559ab0657a3297298270a837f25b80fab2530f97cc4efe9420095ad90ae5d",
+    "bytes": 3130
+  },
+  "Unity性能优化/知识体系脑图.md": {
+    "sha256": "3cc7455cb1cb2c804247cb4e195288288c9e7ed6825a89c7198e86489f467c1d",
+    "bytes": 2447
+  },
+  "云端交接/00 云端继续前先读.md": {
+    "sha256": "dc34857015593ba8a02313fbf8767a9e581b03a33eae2bdf2fc62b7851a8e1ad",
+    "bytes": 2080
+  },
+  "云端交接/历史会话原文/01 分支 · 场景的流式加载.md": {
+    "sha256": "b81706636f872241ba2e83319748d574012a460cdbd43f8b44e10aab07ecbb9f",
+    "bytes": 25656
+  },
+  "云端交接/历史会话原文/02 场景的流式加载.md": {
+    "sha256": "f89bddcc77e81a146eab976802aae9defc1455dae025275016aa62085c21b199",
+    "bytes": 65309
+  },
+  "云端交接/历史会话原文/03 分支 · 讲解 Unity 内存原理.md": {
+    "sha256": "8a4c7229592fb4c0efe132941335fed236f528b19a1fd364cf3bad5d871f2bff",
+    "bytes": 41650
+  },
+  "云端交接/历史会话原文/04 讲解 Unity 内存原理.md": {
+    "sha256": "381725a280d109d55b8be8016b5d45ca0dad971d52229489f23c15ed3f94888a",
+    "bytes": 50798
+  },
+  "云端交接/历史会话原文/05 UniTask 原理与卡顿.md": {
+    "sha256": "3453d85a285a2be84908a50181acd159cbe3cc9ab400f864f58a36856e0f77ec",
+    "bytes": 44204
+  },
+  "云端交接/历史会话原文/06 Unity异步方案对比.md": {
+    "sha256": "62d879ae6e62c8ee5a79af3c73755ec99c3ca5fb46a65ba8af2edceb28616aef",
+    "bytes": 11035
+  },
+  "云端交接/历史会话原文/07 Unity纹理回退机制.md": {
+    "sha256": "305639ff97b9337cd37708614d4d951c59086f392cce6d701cd3f27df1e9d2fe",
+    "bytes": 63226
+  },
+  "云端交接/历史会话原文/08 Unity图集对比.md": {
+    "sha256": "103eb3ca54d61097bc9f5e5e858cf8987eb3a0b9349e9869d2b550fec03c52cf",
+    "bytes": 44018
+  },
+  "云端交接/历史会话原文/09 解释ASTC压缩格式.md": {
+    "sha256": "48703763bab60847cf1196ad366a6f7a83089f0b39aa1ded74282f4ff86e41e8",
+    "bytes": 15712
+  },
+  "云端交接/历史会话原文/10 分支 · Unity UGUI 架构图.md": {
+    "sha256": "f8790afc19442a00b6bcf5d9963bd511e7fa629aec1bce3c8d1cc1d5eb6409b2",
+    "bytes": 30422
+  },
+  "云端交接/历史会话原文/11 Unity UGUI 架构图.md": {
+    "sha256": "fd4ed29c7fe8290035193f2f0f6643463acf9bd8969f573ed53b3491df68b27c",
+    "bytes": 5968
+  },
+  "云端交接/历史会话原文/12 UGUI 架构图解析.md": {
+    "sha256": "be086fbdbca240e20b560817b1905897d10b9f1f33fd45ec2f8ecf2b972351af",
+    "bytes": 4343
+  },
+  "云端交接/历史会话原文/13 UGUI 概述解析.md": {
+    "sha256": "2d32d8a67d971cc1ff1b6c26c39b3b672e0518785bd31d62b21424f71e1d1345",
+    "bytes": 32381
+  },
+  "云端交接/历史会话原文/14 Unity Cinemachine程序集错误.md": {
+    "sha256": "3710179cb5e38055e0ede648dedc76bd40780964689ea8091aa6957fc8ee2e6b",
+    "bytes": 13552
+  },
+  "云端交接/历史会话原文/15 UGUI架构图解析.md": {
+    "sha256": "8ef4ddf76bca4e35be31170e77b2c0244bf60ed27d968c36ad7cf61430ccda2d",
+    "bytes": 5585
+  },
+  "云端交接/历史会话原文/16 uGUI 网格重建过程.md": {
+    "sha256": "1372e12afd629eee8debf92a9d95544a624a7ce69ad6be7150f7827be92628c8",
+    "bytes": 19444
+  },
+  "云端交接/历史会话原文/17 Unity IPointerClickHandler 点击原理.md": {
+    "sha256": "54edb9efc6ebb52d6561de0adf1f0dca044579af5306b6901dcbdef2c55ab540",
+    "bytes": 18800
+  },
+  "云端交接/历史会话原文/18 CanvasGroup in Unity.md": {
+    "sha256": "d9428ea15ed1b3ce4243dd04789c1becb15496dd2b727899630b00b0a5ae90a4",
+    "bytes": 1546
+  },
+  "云端交接/历史会话原文/19 Unity Camera Setup.md": {
+    "sha256": "c775b45932ae44a75c1af30c51effd56c206ef1a038a690fc4997870e3c674ae",
+    "bytes": 23625
+  },
+  "云端交接/历史会话原文/20 自定义Unity Timer系统.md": {
+    "sha256": "ce52ee6478ea3b303de11da4c9880b1fbdc8da867a524e5f3ac4c7a7241b1f59",
+    "bytes": 16931
+  },
+  "云端交接/历史会话原文/21 FixedUpdate 时间执行.md": {
+    "sha256": "0117f62726a4b70d839b924eaff13ab44424068b1212d0e3b72ba490684fa33f",
+    "bytes": 15030
+  },
+  "云端交接/历史会话原文/22 处理AssetBundle循环引用.md": {
+    "sha256": "11cd28217efb8342d0fbf499e45d0c84dc583fb07c53f3379a3638df342b25b7",
+    "bytes": 23517
+  },
+  "云端交接/历史会话原文/23 Resources目录与启动时间.md": {
+    "sha256": "06338e361b3b068d4ad271b73b204ae9e102298f12178b37a4d6b0e09ff6b235",
+    "bytes": 8032
+  },
+  "云端交接/历史会话原文/24 Unity Addressables 架构.md": {
+    "sha256": "a5018189a211776fe8ae33b01a6a627611b0edf0cbd3b03a2a710aed2d74b296",
+    "bytes": 32486
+  },
+  "云端交接/历史会话原文/25 Unity Shader Variants.md": {
+    "sha256": "08c7cbfddbfaafe9aed41a7c89154b6df7e6b94700a972c4dff6b64a736b8711",
+    "bytes": 15462
+  },
+  "云端交接/历史会话原文/26 LOD切换优化方案.md": {
+    "sha256": "717badf5a28e38184757c6446078faff09645f50fb4048570fb13d5b4de6f382",
+    "bytes": 5171
+  },
+  "云端交接/历史会话原文/27 Unity 粒子系统对象池.md": {
+    "sha256": "1ef62335c94f8fa0e878af6951421faef0e1947187329ec61ed4c8c44074ccb5",
+    "bytes": 19107
+  },
+  "云端交接/历史会话原文/28 TCP 粘包解析.md": {
+    "sha256": "0cc9de9de8f755d59ce8536d18b0b53025a9b239076e922d4833bba0e8d6292b",
+    "bytes": 24555
+  },
+  "云端交接/历史会话原文/29 INotifyPropertyChanged简介.md": {
+    "sha256": "ae72ead84905c66ff46472995fdf983946250c5775adab853fff2931bd295bb8",
+    "bytes": 13679
+  },
+  "云端交接/历史会话原文/30 Unity yield return 讲解.md": {
+    "sha256": "060dca62452de0a59233543387d7dbf3a66e7988ea51acd98364e651ad9c3b8a",
+    "bytes": 9268
+  },
+  "云端交接/历史会话原文/31 取消Unity场景加载.md": {
+    "sha256": "8b5406d1324592e5e56bd0a517f7cf8d11bc3cc6bff4dc2b6f6b5fcb3cf35ba6",
+    "bytes": 7066
+  },
+  "云端交接/历史会话原文/32 层级状态机原理.md": {
+    "sha256": "c13bc70bd7cd6ffe63f84b4ab2d779c5af94ba774e53173660a760b34ea09970",
+    "bytes": 18467
+  },
+  "云端交接/历史会话原文/33 MVP 和 MVC 区别.md": {
+    "sha256": "b25aa0e8a8fa1b3647f0145f4ec79dc363cf6f3cc02031db4355d7518414bc66",
+    "bytes": 7940
+  },
+  "云端交接/历史会话原文/34 Unity GPU Instancing 示例.md": {
+    "sha256": "d34b0db8efb914f18ff4efaa98f2981af6216a089d1f589ee915cbbe8021400a",
+    "bytes": 12915
+  },
+  "云端交接/历史会话原文/35 Streambuilder减少GC原因.md": {
+    "sha256": "f2c7c075fd25567490baac471986f9771ccfbcad2720d288b6491e75431bd033",
+    "bytes": 7737
+  },
+  "云端交接/历史会话原文/36 xLua Lua.txt 处理解释.md": {
+    "sha256": "055e2f9828234b7b9b66fd56b188beb8c30472d83e46e5381bdc390ce57d1b78",
+    "bytes": 2835
+  },
+  "云端交接/历史会话返回原文.json": {
+    "sha256": "ec68be3a040732b3ca0a3f6306ede69ae736ce29592679a18790bd045b386b69",
+    "bytes": 829368
+  },
+  "云端交接/历史原文目录.md": {
+    "sha256": "7c440a3e9ddff717a6dc0ecc2beb2163c6b8b71ed298788cc2e341778cc7235a",
+    "bytes": 3165
+  },
+  "云端交接/当前聊天可见消息.json": {
+    "sha256": "b6f2b66069e853a6afb5564a226fa58123f1c50e80a118e1f6bf02b2b8d3dce1",
+    "bytes": 14854
+  },
+  "云端交接/当前聊天可见消息.md": {
+    "sha256": "1e2f876afd497265598f6b0f82ce95d6905f49e8a94009693bb5e97981c7f011",
+    "bytes": 11818
+  },
+  "云端交接/缺口及补齐办法.md": {
+    "sha256": "366a85e232f98b25ef85481e47d961a830e7cda346b8c2279ff7b98c63ede961",
+    "bytes": 1533
+  }
+}

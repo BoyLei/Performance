@@ -36,3 +36,11 @@ Mip Streaming 以资源的 mip 层级为主要控制粒度；Virtual Texturing �
 历史来源：[[历史问题索引#Unity图集对比]]。
 
 历史来源：[[历史问题索引#LOD切换优化方案]]。
+
+## 剔除与间接绘制的必要约束（Q035–Q036、Q101）
+
+每帧写可见 Append Buffer 前重置计数，保证容量足够；复制计数到当前 API 定义的 indirect 参数位置。不同 Mesh/Material/LOD/Pass 仍要分组，顶点阶段经 VisibleIndices 查原实例，处理 startInstance、分组偏移和平台布局。不能无条件把旧 DrawMeshInstancedIndirect 的五整数布局套到所有新 API。
+
+Hi-Z 保存保守的最远深度：常规 Z 常取 max，Reversed-Z 常取 min；投影近深度、选取 mip 与采样覆盖必须一致。上一帧遮挡数据需处理相机切换、快速移动、显隐变化和无历史首帧，宁可保守保留。GRD 不把所有 GameObject 生命周期搬到 GPU，也不等同 Cluster LOD 虚拟几何。
+
+已驻留 LOD 切换主要是选择 Renderer/绘制数据；LODGroup 通常启停各级 Renderer，不必等于在同一 Renderer 上换 Mesh。Buffer Bind 不必导致 Pipeline Flush；GPU 蒙皮也不代表每帧 CPU 上传整块网格。统一 Buffer+offset 是可选架构，需测收益，不能用“现代 GPU 最讨厌状态变化”代替证据。

@@ -44,3 +44,13 @@ Bloom 常先提亮区再逐级降采样、模糊、逐级升采样合成。降�
 历史来源：[[历史问题索引#Unity纹理回退机制]]。
 
 历史来源：[[历史问题索引#Unity Camera Setup]]。
+
+## 合成路径与 RenderGraph 纠错（Q074–Q078）
+
+URP Camera Stack 的 Overlay Camera 通常共享 Base 的目标，不能仅将 UI 放进 Overlay 就保证独立原生分辨率。优先核对当前版本 Render Scale 与 Screen Space Overlay；自定义 SRP 明确执行场景低分辨率 → 后处理 → 上采样 → 最终输出 UI，并在 Frame Debugger 查每阶段实际目标尺寸。UI 的设计参考坐标与输出像素仍须分开。
+
+FSR2、DLSS、XeSS 等时域重建需要运动矢量、深度、抖动与历史管理，并非任意替换一次 Blit Shader；它们是备选方案，不是 FSR2→DLSS→XeSS 串行叠加。旧“下降 30–60%”没有项目实测依据。
+
+RenderGraph 的正确依赖示意为 SceneColor 与 Depth→SSAO，AO 在照明/合成中使用；Bloom 读取场景亮度颜色，不能把 SSAO 黑白遮蔽纹理直接当 Bloom 的常规输入。Pass 裁剪、临时纹理复用/别名、异步计算依赖兼容条件；有副作用或导入资源的 Pass 可能需要显式保留，图不保证显存零额外成本或任意重排。
+
+Graphics.Blit 的同源同目标反馈通常未定义，但 GPU 并非“完全不能原地改纹理”：固定混合、受支持的存储访问等是不同机制。全屏三角形仍有顶点着色工作，只是远小于重新绘制场景。API 选择考虑 XR、RTHandle、RenderGraph 与资源状态兼容性，不声称新接口在所有场景必然更快。

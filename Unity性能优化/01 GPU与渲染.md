@@ -63,3 +63,20 @@ Pass 决定一次材质可能参与哪些绘制阶段；关键字组合产生变
 专项：[[GPU Driven与虚拟化技术]]。
 
 历史来源：[[历史问题索引#Unity Shader Variants]]。
+
+## 关键字的使用边界（Q032–Q033、Q098）
+
+同一 Shader Variant 的不同 Material 可走 SRP Batcher；`renderer.material` 可能实例化材质，必须管理其生命周期。自动 MeshRenderer 实例化在 Unity 2022.3 通常让位于 SRP Batcher；显式实例化 API 是另一条路径，不能仅勾选材质开关就认定成功。
+
+```hlsl
+#pragma shader_feature_local _ USE_EMISSION
+#ifdef USE_EMISSION
+    color += emission;
+#endif
+```
+
+材质可用 `material.EnableKeyword("USE_EMISSION")` 切换已保留的组合。`shader_feature` 会依据构建使用情况裁剪，运行时才启用的组合要显式保留；`multi_compile` 也可能被管线、自定义剔除或平台规则裁剪，不是“永远全部编译”。local 限制关键字作用域，不会自动减少组合数量。静态关键字可移除不用的分支，但 uniform 动态分支未必出现线程分歧，不能断言 Variant 总是更快。
+
+SVC WarmUp 不是“此后永不卡顿”的保证；现代图形 API 的管线状态还与顶点布局、渲染目标等有关。以实际构建首次绘制和真机 Timeline 验收。历史对应 [[历史问题索引#Q098]]；版本依据见 [[参考资料与版本边界#本轮技术核查依据]]。
+
+本轮复核结论见 [[知识点逐项核验]]；文档/源码版本依据见 [[技术核验来源]]。

@@ -27,8 +27,10 @@ related: []
 
 ## 对照实验
 
-只做 LoadAsset、加载后实例化但不显示、最后启用显示，分别采样。检查依赖 Bundle 是否拖入过多纹理或 Shader。Application.backgroundLoadingPriority、asyncUploadTimeSlice 只应作为特定阶段的调节实验，不是所有卡顿的通用开关。
+只做 LoadAsset、加载后实例化但不显示、最后启用显示，分别采样。检查依赖 Bundle 是否拖入过多纹理或 Shader。Application.backgroundLoadingPriority 调整适用的加载线程与主线程集成时间，asyncUploadTimeSlice 限制异步纹理/网格上传的时间片；后者在渲染线程上传路径起作用，不是业务主线程 Instantiate 的通用预算。参数只应作为特定阶段的调节实验，不保证能拆开单个昂贵操作。
 
 关联：[[06 异步与生命周期]]、[[03 内存与GC]]、[[09 角色动画与特效]]。
 
 历史来源：[[历史问题索引#分支 · 讲解 Unity 内存原理]]。
+
+本轮复核结论见 [[知识点逐项核验]]；文档/源码版本依据见 [[技术核验来源]]。

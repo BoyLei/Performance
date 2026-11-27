@@ -69,3 +69,33 @@ MVC、MVP 和属性通知用于组织状态与表现；性能来自减少无效�
 历史来源：[[历史问题索引#Unity IPointerClickHandler 点击原理]]。
 
 历史来源：[[历史问题索引#CanvasGroup in Unity]]。
+
+## 移动、尺寸与 UI 技术选型纠错（Q054–Q067）
+
+纯位置变化不必调用每个 Graphic 的 OnPopulateMesh；尺寸变化、Image 切片/填充、文字变化等才可能触发本地几何重建。Transform 变化仍可能引发 Canvas 原生重新合批，不代表零成本。不要把 Layout Rebuild、Graphic Rebuild、Canvas.BuildBatch 混成“整个 Canvas 所有 Mesh 重建”。
+
+uGUI 同样保留对象树；UI Toolkit 的保留式 Visual Tree 也最终生成几何并提交 GPU。“GPU 不认识坐标”“UI Toolkit 必然整树重排”“UMG 不需要网格”“Overlay 总是最快”都不是可采信的选型结论。按实际版本、世界空间 UI、输入、样式、动画、绑定和 Profiler 对比；不要从架构标签推导必然快慢。
+
+RectTransform 宽度可写为 `parentWidth*(anchorMax.x-anchorMin.x)+sizeDelta.x`。水平拉伸且左右边距分别 100 时，1920 宽父节点中的宽度为 1720；Pivot 影响参考点，CanvasScaler 不代替 Anchor 与安全区适配。
+
+CanvasGroup.interactable 主要影响遵守组状态的 Selectable，不等同阻止所有自定义 IPointerClickHandler；blocksRaycasts 参与 UI 射线过滤，不是禁用 Physics.Raycast 的开关。alpha=0 也不会自动让射线穿透。
+
+完整模块和源码定位见 [[UGUI架构与事件顺序]]，面试原问作为练习入口保留，不能将助手题库里每个反问当作用户已问或已掌握。
+
+本轮复核结论见 [[知识点逐项核验]]；文档/源码版本依据见 [[技术核验来源]]。
+
+### Q072：普通业务数据的多条件排序
+
+以下只是字典序规则示例，不是 EventSystem 源码比较器：优先级降序、距离升序、唯一序号升序。`CompareTo` 避免用相减比较整数时溢出；距离应预先保证有限，序号唯一才能得到确定的同键顺序。`List.Sort` 本身不稳定，不应依赖输入顺序保留相同键的次序。
+
+```csharp
+items.Sort((a, b) =>
+{
+    int c = b.Priority.CompareTo(a.Priority);
+    if (c != 0) return c;
+    c = a.Distance.CompareTo(b.Distance);
+    return c != 0 ? c : a.Sequence.CompareTo(b.Sequence);
+});
+```
+
+示例中的字段是业务约定，未作为完整 Unity 脚本编译。UGUI 的 RaycastResult 仍须按固定版本源码规则理解，不能套用这里的三个字段。

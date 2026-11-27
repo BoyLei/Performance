@@ -1,0 +1,57 @@
+{
+  "tables": [
+    {
+      "name": "逐份原文核对记录",
+      "headerCells": 4,
+      "rows": 36,
+      "rowWidths": [
+        4
+      ],
+      "firstRow": [
+        "01 分支 · 场景的流式加载.md",
+        "Q001–Q005",
+        "00 知识库首页",
+        "工具选型与整理要求；不把模板题目当用户原问"
+      ],
+      "firstLink": "云端交接/历史会话原文/01 分支 · 场景的流式加载"
+    },
+    {
+      "name": "历史原问覆盖与缺口",
+      "headerCells": 4,
+      "rows": 136,
+      "rowWidths": [
+        4
+      ],
+      "firstRow": [
+        "Q001",
+        "管理或需求消息",
+        "07 场景流式与地形",
+        "保留请求上下文；工具效果、旧等待状态不冒充性能知识。"
+      ],
+      "firstLink": "历史问题索引#Q001"
+    },
+    {
+      "name": "知识点逐项核验",
+      "headerCells": 5,
+      "rows": 99,
+      "rowWidths": [
+        5
+      ],
+      "firstRow": [
+        "K001",
+        "01 GPU与渲染 > 帧流水线与瓶颈",
+        "有条件成立",
+        "CPU/GPU 重叠不能简单相加；降分辨率是诊断实验，不直接证明唯一瓶颈。",
+        "S01、S38、S44"
+      ],
+      "firstLink": "01 GPU与渲染#帧流水线与瓶颈"
+    }
+  ],
+  "tableLink": "Unity性能优化/历史问题索引.md",
+  "branch": {
+    "found": true,
+    "childLinks": 7,
+    "hasParentListItem": true,
+    "codeBlocks": 0
+  }
+}

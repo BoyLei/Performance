@@ -4,11 +4,18 @@ No Obsidian/plugin execution; no file writes. Historical originals are read-only
 """
 from pathlib import Path
 import collections
+import argparse
 import json
 import re
 import subprocess
 import sys
 import yaml
+from markdown_structure import wikilink_destination, table_errors, hierarchy_errors
+
+parser = argparse.ArgumentParser(description=__doc__)
+parser.add_argument('--base-ref', default='490076d',
+                    help='Protection baseline; use the reviewed parent commit for follow-up PRs')
+args = parser.parse_args()
 
 ROOT = Path(__file__).resolve().parents[2]
 VAULT = ROOT / 'Unity性能优化'
@@ -82,8 +89,10 @@ for p in sorted(VAULT.glob('*.md')):
     body, blocks, closed = body_and_blocks(text)
     require(closed, f'{p.name}: unclosed fence')
     require(len(re.findall(r'^# ', body, re.M)) == 1, f'{p.name}: expected one H1')
+    for issue in table_errors(body):
+        errors.append(f'{p.name}: {issue}')
     for raw in re.findall(r'\[\[([^\]]+)\]\]', text):
-        dest = raw.split('|', 1)[0]
+        dest = wikilink_destination(raw)
         target, sep, anchor = dest.partition('#')
         q = resolve(target, p)
         counts['wikilinks'] += 1
@@ -105,16 +114,8 @@ for p in sorted(VAULT.glob('*.md')):
         require(len(m[1]) % 4 == 0, f'{p.name}: task indent must be 4-space levels')
         tasks.append((p, m[3]))
     if p.stem in {'学习任务脑图','知识体系脑图'}:
-        previous = -1
-        for line in body.splitlines():
-            m = re.match(r'^( *)- ', line)
-            if m:
-                level = len(m[1])
-                require(level % 4 == 0, f'{p.name}: invalid list indentation')
-                require(level == 0 if previous == -1 else level <= previous + 4, f'{p.name}: skipped hierarchy level')
-                previous = level
-            elif line.strip():
-                previous = -1
+        for issue in hierarchy_errors(body):
+            errors.append(f'{p.name}: {issue}')
     for kind, block in blocks:
         if kind == 'mermaid':
             counts['mermaid_blocks'] += 1
@@ -166,7 +167,7 @@ if audit_path.exists() and relations_path.exists():
                 for h in re.findall(r'^## (.+)$', body_and_blocks(p.read_text())[0], re.M)
                 if h != '关联'}
     audit = audit_path.read_text()
-    reviewed = re.findall(r'^\|K\d{3}\|\[\[([^\]]+)\]\]\|', audit, re.M)
+    reviewed = [link.replace(r'\|', '|') for link in re.findall(r'^\|K\d{3}\|\[\[([^\]]+)\]\]\|', audit, re.M)]
     require(set(reviewed) == expected, 'knowledge audit missing/stale H2 entries')
     require(len(reviewed) == len(set(reviewed)), 'knowledge audit repeats a section')
     relations = relations_path.read_text()
@@ -182,7 +183,7 @@ if audit_path.exists() and relations_path.exists():
     counts['reviewed_related_edges'] = len(pairs)
 
 # Explicit user protection: all tracked changes must stay within the knowledge base.
-changed = subprocess.check_output(['git','diff','--name-only','-z','490076d','--'], cwd=ROOT, text=True).split('\0')
+changed = subprocess.check_output(['git','diff','--name-only','-z',args.base_ref,'--'], cwd=ROOT, text=True).split('\0')
 untracked = subprocess.check_output(['git','ls-files','--others','--exclude-standard','-z'], cwd=ROOT, text=True).split('\0')
 require(all(path.startswith('Unity性能优化/') for path in changed + untracked if path), 'changes outside knowledge base')
 counts['history_files'] = len(raws)

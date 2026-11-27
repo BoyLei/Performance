@@ -17,7 +17,7 @@ for n, message in enumerate(messages, 1):
     quoted = '\n'.join(line[2:] if line.startswith('> ') else ''
                        for line in blocks[f'{n:03}'].splitlines() if line.startswith('>'))
     assert normalize(message) == normalize(quoted), f'Q{n:03} transcription mismatch'
-ledger = (vault / '历史原问覆盖与缺口.md').read_text()
+ledger = (vault / '历史原问覆盖与缺口.md').read_text().replace(r'\|', '|')
 ids = re.findall(r'^\|\[\[历史问题索引#Q(\d{3})\|', ledger, re.M)
 assert ids == [f'{n:03}' for n in range(1, 137)], 'coverage ledger missing/duplicate/out-of-order question'
 print('136/136 saved user messages match index; 136 ledger rows present. Finite snapshot only.')

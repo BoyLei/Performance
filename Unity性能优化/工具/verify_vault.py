@@ -19,6 +19,12 @@ args = parser.parse_args()
 
 ROOT = Path(__file__).resolve().parents[2]
 VAULT = ROOT / 'Unity性能优化'
+
+def note(name):
+    matches = list(VAULT.rglob(name + '.md'))
+    if len(matches) != 1:
+        raise ValueError(f'Expected one note: {name}')
+    return matches[0]
 errors = []
 counts = collections.Counter()
 
@@ -58,6 +64,12 @@ for p in all_md:
     headings[p] = set(re.findall(r'^#{1,6}\s+(.+?)\s*#*$', body, re.M))
 
 def resolve(target, source):
+    if target.endswith('.canvas'):
+        candidates = [q for q in ROOT.rglob(Path(target).name) if '.git' not in q.parts]
+        if '/' in target:
+            candidates = [q for q in candidates if q == ROOT / target or q == source.parent / target]
+        require(len(candidates) <= 1, f'{source.name}: ambiguous canvas {target}')
+        return candidates[0] if len(candidates) == 1 else None
     target = target.removesuffix('.md')
     if not target:
         return source
@@ -71,7 +83,7 @@ def resolve(target, source):
 
 edges = collections.defaultdict(set)
 tasks = []
-for p in sorted(VAULT.glob('*.md')):
+for p in sorted(VAULT.rglob('*.md')):
     text = p.read_text()
     counts['content_documents'] += 1
     fm = re.match(r'\A---\n(.*?)\n---\n', text, re.S)
@@ -130,14 +142,14 @@ for p in sorted(VAULT.glob('*.md')):
 
 # Resolve query expectation after collecting all source tasks.
 query_counts = []
-for kind, block in body_and_blocks((VAULT/'任务总览.md').read_text())[1]:
+for kind, block in body_and_blocks((note('任务总览')).read_text())[1]:
     if kind == 'tasks':
         filters = [line.removeprefix('tag includes ') for line in block.splitlines() if line.startswith('tag includes ')]
         matched = 0 if block.splitlines()[0] == 'done' else sum(all(tag in task for tag in filters) for _, task in tasks)
         query_counts.append(matched)
 require(len(tasks) == len(set(task for _, task in tasks)), 'duplicate task descriptions')
 
-index = (VAULT/'历史问题索引.md').read_text()
+index = (note('历史问题索引')).read_text()
 ids = re.findall(r'^### Q(\d{3})$', index, re.M)
 require(ids == [f'{i:03d}' for i in range(1,137)], 'Q001–Q136 not complete/ordered/unique')
 require(len(re.findall(r'^原文：\[\[云端交接/历史会话原文/', index, re.M)) == 136, 'missing question source links')
@@ -146,19 +158,19 @@ require(len(raws) == 36, 'expected 36 history files')
 require(sum(len(re.findall(r'^### 用户$', p.read_text(), re.M)) for p in raws) == 136, 'history user count changed')
 # Every primary module must be reachable from home and link back to the question index.
 home = VAULT/'00 知识库首页.md'
-idx = VAULT/'历史问题索引.md'
-for p in sorted(VAULT.glob('[0-9][0-9] *.md')):
+idx = note('历史问题索引')
+for p in sorted(VAULT.rglob('[0-9][0-9] *.md')):
     if p != home:
         require(p in edges[home], f'{p.name}: not linked from home')
         require(idx in edges[p], f'{p.name}: missing source backlink')
-for p in VAULT.glob('*.md'):
+for p in VAULT.rglob('*.md'):
     require(any(p in dests for dests in edges.values()), f'{p.name}: orphan document')
 # Semantic review inventory: make omissions/stale heading anchors visible.
 # This verifies ledger coverage only; it cannot judge whether prose is true.
-audit_path = VAULT / '知识点逐项核验.md'
-relations_path = VAULT / '知识关联核验.md'
+audit_path = note('知识点逐项核验')
+relations_path = note('知识关联核验')
 if audit_path.exists() and relations_path.exists():
-    technical = [p for p in VAULT.glob('*.md')
+    technical = [p for p in VAULT.rglob('*.md')
                  if (re.match(r'^\d{2} ', p.name) and not p.name.startswith('00'))
                  or p.stem in {'建筑ID与连续数组索引','无Loading副本与预加载卡顿',
                                'GPU Mask与铺地火焰','场景UI分辨率与RT带宽',

@@ -12,6 +12,24 @@ related: ["[[03 内存与GC]]", "[[06 异步与生命周期]]", "[[07 场景流�
 
 # 05 Addressables与AssetBundle
 
+%% navigation-start %%
+> [!abstract] 本页位置
+> [[00 知识库首页|首页]] → [[资源与世界]] → **05 Addressables与AssetBundle**
+> 按版本核实加载链，配对句柄与资源释放。
+> [[05 Addressables与AssetBundle 导图.canvas|打开图谱]] · [[知识体系脑图|完整层级]] · [[模块依赖与关联|关联说明]]
+
+> [!tip]- 本页知识点索引
+> - [[05 Addressables与AssetBundle#地址与依赖图|地址与依赖图]]
+> - [[05 Addressables与AssetBundle#引用计数与释放|引用计数与释放]]
+> - [[05 Addressables与AssetBundle#循环引用与卸载|循环引用与卸载]]
+> - [[05 Addressables与AssetBundle#Resources与启动|Resources与启动]]
+> - [[05 Addressables与AssetBundle#粒度与抖动|粒度与抖动]]
+> - [[05 Addressables与AssetBundle#经 1.21.21 包源码核对的加载链（Q096–Q097）|经 1.21.21 包源码核对的加载链（Q096–Q097）]]
+> - [[05 Addressables与AssetBundle#释放与原生引用纠错（Q086–Q090）|释放与原生引用纠错（Q086–Q090）]]
+> - [[05 Addressables与AssetBundle#Resources 的表与热更新边界（Q091–Q092）|Resources 的表与热更新边界（Q091–Q092）]]
+
+%% navigation-end %%
+
 本模块为归纳后的原理与实践建议。历史原问集中在 [[历史问题索引]]；无原文支持的扩展不视为用户问过。
 
 ## 地址与依赖图

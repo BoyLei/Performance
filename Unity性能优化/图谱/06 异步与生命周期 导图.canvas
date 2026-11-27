@@ -1,0 +1,205 @@
+{
+  "nodes": [
+    {
+      "id": "cf56d374f025a7ff",
+      "type": "text",
+      "text": "# [[06 异步与生命周期]]\n\nawait 不等于后台线程，取消不等于底层操作终止。\n\n[[学习总览.canvas|返回总览]] · [[模块依赖与关联|跨模块联系]]",
+      "x": 250,
+      "y": 0,
+      "width": 900,
+      "height": 180,
+      "color": "6"
+    },
+    {
+      "id": "d1f7f62cfed9edc8",
+      "type": "text",
+      "text": "## 协程与await\n\n[[06 异步与生命周期#协程与await|打开知识点 →]]",
+      "x": 0,
+      "y": 290,
+      "width": 600,
+      "height": 150,
+      "color": "5"
+    },
+    {
+      "id": "e43daf6c94709f4d",
+      "type": "text",
+      "text": "## UniTask机制\n\n[[06 异步与生命周期#UniTask机制|打开知识点 →]]",
+      "x": 720,
+      "y": 290,
+      "width": 600,
+      "height": 150,
+      "color": "5"
+    },
+    {
+      "id": "7b054124c869dfd7",
+      "type": "text",
+      "text": "## 取消与过期结果\n\n[[06 异步与生命周期#取消与过期结果|打开知识点 →]]",
+      "x": 0,
+      "y": 520,
+      "width": 600,
+      "height": 150,
+      "color": "5"
+    },
+    {
+      "id": "62c5a2b09e12ec3c",
+      "type": "text",
+      "text": "## 异步加载仍可卡顿\n\n[[06 异步与生命周期#异步加载仍可卡顿|打开知识点 →]]",
+      "x": 720,
+      "y": 520,
+      "width": 600,
+      "height": 150,
+      "color": "5"
+    },
+    {
+      "id": "1b6acffe4368135e",
+      "type": "text",
+      "text": "## 场景激活与取消\n\n[[06 异步与生命周期#场景激活与取消|打开知识点 →]]",
+      "x": 0,
+      "y": 750,
+      "width": 600,
+      "height": 150,
+      "color": "5"
+    },
+    {
+      "id": "f0a583db67bc8504",
+      "type": "text",
+      "text": "## 状态机、续体与等待对象（Q021–Q026、Q115–Q117）\n\n[[06 异步与生命周期#状态机、续体与等待对象（Q021–Q026、Q115–Q117）|打开知识点 →]]",
+      "x": 720,
+      "y": 750,
+      "width": 600,
+      "height": 150,
+      "color": "5"
+    },
+    {
+      "id": "61b8fd05a1982c46",
+      "type": "text",
+      "text": "## 停止协程不等于收尾完成（Q083–Q084）\n\n[[06 异步与生命周期#停止协程不等于收尾完成（Q083–Q084）|打开知识点 →]]",
+      "x": 0,
+      "y": 980,
+      "width": 600,
+      "height": 150,
+      "color": "5"
+    },
+    {
+      "id": "532d278570c00aea",
+      "type": "text",
+      "text": "## 场景逻辑取消的安全收尾（Q118–Q119）\n\n[[06 异步与生命周期#场景逻辑取消的安全收尾（Q118–Q119）|打开知识点 →]]",
+      "x": 720,
+      "y": 980,
+      "width": 600,
+      "height": 150,
+      "color": "5"
+    },
+    {
+      "id": "4ef55155661b63ea",
+      "type": "text",
+      "text": "## 专项实践\n\n[[无Loading副本与预加载卡顿]]\n\n[[专项实践地图.canvas|打开专项地图]]",
+      "x": 250,
+      "y": 1210,
+      "width": 900,
+      "height": 185,
+      "color": "2"
+    }
+  ],
+  "edges": [
+    {
+      "id": "6eb37c6e07f4ceaf",
+      "fromNode": "cf56d374f025a7ff",
+      "toNode": "d1f7f62cfed9edc8",
+      "fromSide": "left",
+      "toSide": "left",
+      "fromEnd": "none",
+      "toEnd": "none",
+      "label": "知识点",
+      "color": "4"
+    },
+    {
+      "id": "6f0c917a65cd28dd",
+      "fromNode": "cf56d374f025a7ff",
+      "toNode": "e43daf6c94709f4d",
+      "fromSide": "right",
+      "toSide": "right",
+      "fromEnd": "none",
+      "toEnd": "none",
+      "label": "知识点",
+      "color": "4"
+    },
+    {
+      "id": "c1aa612029a08816",
+      "fromNode": "cf56d374f025a7ff",
+      "toNode": "7b054124c869dfd7",
+      "fromSide": "left",
+      "toSide": "left",
+      "fromEnd": "none",
+      "toEnd": "none",
+      "label": "知识点",
+      "color": "4"
+    },
+    {
+      "id": "7b9e0a3b4b2702e5",
+      "fromNode": "cf56d374f025a7ff",
+      "toNode": "62c5a2b09e12ec3c",
+      "fromSide": "right",
+      "toSide": "right",
+      "fromEnd": "none",
+      "toEnd": "none",
+      "label": "知识点",
+      "color": "4"
+    },
+    {
+      "id": "4935ee0a083746d3",
+      "fromNode": "cf56d374f025a7ff",
+      "toNode": "1b6acffe4368135e",
+      "fromSide": "left",
+      "toSide": "left",
+      "fromEnd": "none",
+      "toEnd": "none",
+      "label": "知识点",
+      "color": "4"
+    },
+    {
+      "id": "dd54d1a8a22f8edd",
+      "fromNode": "cf56d374f025a7ff",
+      "toNode": "f0a583db67bc8504",
+      "fromSide": "right",
+      "toSide": "right",
+      "fromEnd": "none",
+      "toEnd": "none",
+      "label": "知识点",
+      "color": "4"
+    },
+    {
+      "id": "8b4c374de6059b71",
+      "fromNode": "cf56d374f025a7ff",
+      "toNode": "61b8fd05a1982c46",
+      "fromSide": "left",
+      "toSide": "left",
+      "fromEnd": "none",
+      "toEnd": "none",
+      "label": "知识点",
+      "color": "4"
+    },
+    {
+      "id": "606bce4d05afda24",
+      "fromNode": "cf56d374f025a7ff",
+      "toNode": "532d278570c00aea",
+      "fromSide": "right",
+      "toSide": "right",
+      "fromEnd": "none",
+      "toEnd": "none",
+      "label": "知识点",
+      "color": "4"
+    },
+    {
+      "id": "3d908baf493a867c",
+      "fromNode": "cf56d374f025a7ff",
+      "toNode": "4ef55155661b63ea",
+      "fromSide": "bottom",
+      "toSide": "top",
+      "fromEnd": "none",
+      "toEnd": "none",
+      "label": "应用场景",
+      "color": "4"
+    }
+  ]
+}

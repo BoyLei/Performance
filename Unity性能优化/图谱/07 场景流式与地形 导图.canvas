@@ -1,0 +1,205 @@
+{
+  "nodes": [
+    {
+      "id": "94cbc424bba26602",
+      "type": "text",
+      "text": "# [[07 场景流式与地形]]\n\n分开管理空间候选、加载状态、驻留与可见集合。\n\n[[学习总览.canvas|返回总览]] · [[模块依赖与关联|跨模块联系]]",
+      "x": 250,
+      "y": 0,
+      "width": 900,
+      "height": 180,
+      "color": "6"
+    },
+    {
+      "id": "fa46f63f9c051aad",
+      "type": "text",
+      "text": "## 编辑场景与运行产物\n\n[[07 场景流式与地形#编辑场景与运行产物|打开知识点 →]]",
+      "x": 0,
+      "y": 290,
+      "width": 600,
+      "height": 150,
+      "color": "5"
+    },
+    {
+      "id": "9be0006fe30a9fd3",
+      "type": "text",
+      "text": "## Chunk与Bounds\n\n[[07 场景流式与地形#Chunk与Bounds|打开知识点 →]]",
+      "x": 720,
+      "y": 290,
+      "width": 600,
+      "height": 150,
+      "color": "5"
+    },
+    {
+      "id": "724877069da91901",
+      "type": "text",
+      "text": "## 加载滞回与状态机\n\n[[07 场景流式与地形#加载滞回与状态机|打开知识点 →]]",
+      "x": 0,
+      "y": 520,
+      "width": 600,
+      "height": 150,
+      "color": "5"
+    },
+    {
+      "id": "2cfc7f2529cc4bf7",
+      "type": "text",
+      "text": "## Terrain草树与真正流送\n\n[[07 场景流式与地形#Terrain草树与真正流送|打开知识点 →]]",
+      "x": 720,
+      "y": 520,
+      "width": 600,
+      "height": 150,
+      "color": "5"
+    },
+    {
+      "id": "681d66bb40a3deb8",
+      "type": "text",
+      "text": "## Prefab Override\n\n[[07 场景流式与地形#Prefab Override|打开知识点 →]]",
+      "x": 0,
+      "y": 750,
+      "width": 600,
+      "height": 150,
+      "color": "5"
+    },
+    {
+      "id": "c9feaa37f0114b2d",
+      "type": "text",
+      "text": "## 碰撞与服务器导航\n\n[[07 场景流式与地形#碰撞与服务器导航|打开知识点 →]]",
+      "x": 720,
+      "y": 750,
+      "width": 600,
+      "height": 150,
+      "color": "5"
+    },
+    {
+      "id": "62efbb5ac65eda8a",
+      "type": "text",
+      "text": "## 多场景与 Terrain 导出补充（Q006、Q088）\n\n[[07 场景流式与地形#多场景与 Terrain 导出补充（Q006、Q088）|打开知识点 →]]",
+      "x": 0,
+      "y": 980,
+      "width": 600,
+      "height": 150,
+      "color": "5"
+    },
+    {
+      "id": "8f1967ff082d6074",
+      "type": "text",
+      "text": "## Prefab Variant 的构建边界（Q099–Q100）\n\n[[07 场景流式与地形#Prefab Variant 的构建边界（Q099–Q100）|打开知识点 →]]",
+      "x": 720,
+      "y": 980,
+      "width": 600,
+      "height": 150,
+      "color": "5"
+    },
+    {
+      "id": "9371e35726762a95",
+      "type": "text",
+      "text": "## 专项实践\n\n[[建筑ID与连续数组索引]]\n\n[[专项实践地图.canvas|打开专项地图]]",
+      "x": 250,
+      "y": 1210,
+      "width": 900,
+      "height": 185,
+      "color": "2"
+    }
+  ],
+  "edges": [
+    {
+      "id": "1240b6cc0de27c07",
+      "fromNode": "94cbc424bba26602",
+      "toNode": "fa46f63f9c051aad",
+      "fromSide": "left",
+      "toSide": "left",
+      "fromEnd": "none",
+      "toEnd": "none",
+      "label": "知识点",
+      "color": "4"
+    },
+    {
+      "id": "335572a5db993404",
+      "fromNode": "94cbc424bba26602",
+      "toNode": "9be0006fe30a9fd3",
+      "fromSide": "right",
+      "toSide": "right",
+      "fromEnd": "none",
+      "toEnd": "none",
+      "label": "知识点",
+      "color": "4"
+    },
+    {
+      "id": "eae83bb66a5cf800",
+      "fromNode": "94cbc424bba26602",
+      "toNode": "724877069da91901",
+      "fromSide": "left",
+      "toSide": "left",
+      "fromEnd": "none",
+      "toEnd": "none",
+      "label": "知识点",
+      "color": "4"
+    },
+    {
+      "id": "6366eb76c42c111d",
+      "fromNode": "94cbc424bba26602",
+      "toNode": "2cfc7f2529cc4bf7",
+      "fromSide": "right",
+      "toSide": "right",
+      "fromEnd": "none",
+      "toEnd": "none",
+      "label": "知识点",
+      "color": "4"
+    },
+    {
+      "id": "bdb391254b46d7fe",
+      "fromNode": "94cbc424bba26602",
+      "toNode": "681d66bb40a3deb8",
+      "fromSide": "left",
+      "toSide": "left",
+      "fromEnd": "none",
+      "toEnd": "none",
+      "label": "知识点",
+      "color": "4"
+    },
+    {
+      "id": "1b624ecd591d6742",
+      "fromNode": "94cbc424bba26602",
+      "toNode": "c9feaa37f0114b2d",
+      "fromSide": "right",
+      "toSide": "right",
+      "fromEnd": "none",
+      "toEnd": "none",
+      "label": "知识点",
+      "color": "4"
+    },
+    {
+      "id": "0aeeb08512106d15",
+      "fromNode": "94cbc424bba26602",
+      "toNode": "62efbb5ac65eda8a",
+      "fromSide": "left",
+      "toSide": "left",
+      "fromEnd": "none",
+      "toEnd": "none",
+      "label": "知识点",
+      "color": "4"
+    },
+    {
+      "id": "8a09010bba85aede",
+      "fromNode": "94cbc424bba26602",
+      "toNode": "8f1967ff082d6074",
+      "fromSide": "right",
+      "toSide": "right",
+      "fromEnd": "none",
+      "toEnd": "none",
+      "label": "知识点",
+      "color": "4"
+    },
+    {
+      "id": "b750d395098489d2",
+      "fromNode": "94cbc424bba26602",
+      "toNode": "9371e35726762a95",
+      "fromSide": "bottom",
+      "toSide": "top",
+      "fromEnd": "none",
+      "toEnd": "none",
+      "label": "应用场景",
+      "color": "4"
+    }
+  ]
+}

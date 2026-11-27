@@ -1,0 +1,121 @@
+{
+  "nodes": [
+    {
+      "id": "b87ce69d78d7174b",
+      "type": "text",
+      "text": "# [[03 内存与GC]]\n\n区分托管分配、原生资源与引用拥有者。\n\n[[学习总览.canvas|返回总览]] · [[模块依赖与关联|跨模块联系]]",
+      "x": 250,
+      "y": 0,
+      "width": 900,
+      "height": 180,
+      "color": "6"
+    },
+    {
+      "id": "ffd7b6177876e243",
+      "type": "text",
+      "text": "## 托管与原生所有权\n\n[[03 内存与GC#托管与原生所有权|打开知识点 →]]",
+      "x": 0,
+      "y": 290,
+      "width": 600,
+      "height": 150,
+      "color": "5"
+    },
+    {
+      "id": "88fbaa0db27b5416",
+      "type": "text",
+      "text": "## GC分配与卡顿\n\n[[03 内存与GC#GC分配与卡顿|打开知识点 →]]",
+      "x": 720,
+      "y": 290,
+      "width": 600,
+      "height": 150,
+      "color": "5"
+    },
+    {
+      "id": "9b6cfa165ec9521f",
+      "type": "text",
+      "text": "## 对象池与峰值\n\n[[03 内存与GC#对象池与峰值|打开知识点 →]]",
+      "x": 0,
+      "y": 520,
+      "width": 600,
+      "height": 150,
+      "color": "5"
+    },
+    {
+      "id": "b77d3b3b2de91911",
+      "type": "text",
+      "text": "## 字符串与缓冲区\n\n[[03 内存与GC#字符串与缓冲区|打开知识点 →]]",
+      "x": 720,
+      "y": 520,
+      "width": 600,
+      "height": 150,
+      "color": "5"
+    },
+    {
+      "id": "8a3bef03a6dbb66b",
+      "type": "text",
+      "text": "## 堆、栈与 Unity GC 的边界（Q130–Q135）\n\n[[03 内存与GC#堆、栈与 Unity GC 的边界（Q130–Q135）|打开知识点 →]]",
+      "x": 0,
+      "y": 750,
+      "width": 600,
+      "height": 150,
+      "color": "5"
+    }
+  ],
+  "edges": [
+    {
+      "id": "2add98e5bdf363ed",
+      "fromNode": "b87ce69d78d7174b",
+      "toNode": "ffd7b6177876e243",
+      "fromSide": "left",
+      "toSide": "left",
+      "fromEnd": "none",
+      "toEnd": "none",
+      "label": "知识点",
+      "color": "4"
+    },
+    {
+      "id": "590b8dcfe96d68be",
+      "fromNode": "b87ce69d78d7174b",
+      "toNode": "88fbaa0db27b5416",
+      "fromSide": "right",
+      "toSide": "right",
+      "fromEnd": "none",
+      "toEnd": "none",
+      "label": "知识点",
+      "color": "4"
+    },
+    {
+      "id": "58ea06cb42111db7",
+      "fromNode": "b87ce69d78d7174b",
+      "toNode": "9b6cfa165ec9521f",
+      "fromSide": "left",
+      "toSide": "left",
+      "fromEnd": "none",
+      "toEnd": "none",
+      "label": "知识点",
+      "color": "4"
+    },
+    {
+      "id": "258e6093a039a2cb",
+      "fromNode": "b87ce69d78d7174b",
+      "toNode": "b77d3b3b2de91911",
+      "fromSide": "right",
+      "toSide": "right",
+      "fromEnd": "none",
+      "toEnd": "none",
+      "label": "知识点",
+      "color": "4"
+    },
+    {
+      "id": "0257776e8243e5c3",
+      "fromNode": "b87ce69d78d7174b",
+      "toNode": "8a3bef03a6dbb66b",
+      "fromSide": "left",
+      "toSide": "left",
+      "fromEnd": "none",
+      "toEnd": "none",
+      "label": "知识点",
+      "color": "4"
+    }
+  ]
+}

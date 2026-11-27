@@ -1,0 +1,163 @@
+{
+  "nodes": [
+    {
+      "id": "3dae84f1aac24c1c",
+      "type": "text",
+      "text": "# 专项实践\n\n[[学习总览.canvas|返回总览]] · [[模块依赖与关联#专项归属与跨模块查阅|归属与边界]]\n\n完整章节展开见 [[知识体系脑图]]。",
+      "x": 420,
+      "y": 0,
+      "width": 960,
+      "height": 160,
+      "color": "6"
+    },
+    {
+      "id": "c8fb6627fc986deb",
+      "type": "text",
+      "text": "## [[建筑ID与连续数组索引]]\n\n主归属：[[07 场景流式与地形]]\n\nCSR 负责索引，不直接决定实例所有权或 GPU 上传。",
+      "x": 0,
+      "y": 280,
+      "width": 560,
+      "height": 200,
+      "color": "2"
+    },
+    {
+      "id": "06a3135d6be0ccfd",
+      "type": "text",
+      "text": "## [[无Loading副本与预加载卡顿]]\n\n主归属：[[06 异步与生命周期]]\n\n加载、取消、实例化与预热是不同成本阶段。",
+      "x": 650,
+      "y": 280,
+      "width": 560,
+      "height": 200,
+      "color": "2"
+    },
+    {
+      "id": "809e4d2750336ef1",
+      "type": "text",
+      "text": "## [[GPU Mask与铺地火焰]]\n\n主归属：[[09 角色动画与特效]]\n\nMask 数学、GPU 更新、粒子与透明覆盖共同决定方案。",
+      "x": 1300,
+      "y": 280,
+      "width": 560,
+      "height": 200,
+      "color": "2"
+    },
+    {
+      "id": "339ac5d24b76996f",
+      "type": "text",
+      "text": "## [[场景UI分辨率与RT带宽]]\n\n主归属：[[01 GPU与渲染]]\n\n场景/UI 分辨率、RT 带宽和合成顺序一起理解。",
+      "x": 0,
+      "y": 560,
+      "width": 560,
+      "height": 200,
+      "color": "2"
+    },
+    {
+      "id": "b4dc78b5acd34697",
+      "type": "text",
+      "text": "## [[GPU Driven与虚拟化技术]]\n\n主归属：[[01 GPU与渲染]]\n\n驻留、可见性和 Indirect 提交是分开的系统。",
+      "x": 650,
+      "y": 560,
+      "width": 560,
+      "height": 200,
+      "color": "2"
+    },
+    {
+      "id": "28f5f72feb622a4c",
+      "type": "text",
+      "text": "## [[UGUI架构与事件顺序]]\n\n主归属：[[08 UGUI与交互]]\n\nUI 重建与输入顺序分开，布局层级不是调用顺序。",
+      "x": 1300,
+      "y": 560,
+      "width": 560,
+      "height": 200,
+      "color": "2"
+    },
+    {
+      "id": "d664f15743659280",
+      "type": "text",
+      "text": "## [[架构线程与代码实践]]\n\n主归属：[[10 MMO架构与网络]]\n\nCallback、HFSM、MVC 等设计组织不等同于性能收益。",
+      "x": 0,
+      "y": 840,
+      "width": 560,
+      "height": 200,
+      "color": "2"
+    }
+  ],
+  "edges": [
+    {
+      "id": "d47d2209acca7b95",
+      "fromNode": "3dae84f1aac24c1c",
+      "toNode": "c8fb6627fc986deb",
+      "fromSide": "bottom",
+      "toSide": "top",
+      "fromEnd": "none",
+      "toEnd": "none",
+      "label": "专项",
+      "color": "4"
+    },
+    {
+      "id": "bea8f71ce07a6182",
+      "fromNode": "3dae84f1aac24c1c",
+      "toNode": "06a3135d6be0ccfd",
+      "fromSide": "bottom",
+      "toSide": "top",
+      "fromEnd": "none",
+      "toEnd": "none",
+      "label": "专项",
+      "color": "4"
+    },
+    {
+      "id": "577f17d9a079bd8d",
+      "fromNode": "3dae84f1aac24c1c",
+      "toNode": "809e4d2750336ef1",
+      "fromSide": "bottom",
+      "toSide": "top",
+      "fromEnd": "none",
+      "toEnd": "none",
+      "label": "专项",
+      "color": "4"
+    },
+    {
+      "id": "541bfc16bd441a6f",
+      "fromNode": "3dae84f1aac24c1c",
+      "toNode": "339ac5d24b76996f",
+      "fromSide": "bottom",
+      "toSide": "top",
+      "fromEnd": "none",
+      "toEnd": "none",
+      "label": "专项",
+      "color": "4"
+    },
+    {
+      "id": "e4530bc62eb54aab",
+      "fromNode": "3dae84f1aac24c1c",
+      "toNode": "b4dc78b5acd34697",
+      "fromSide": "bottom",
+      "toSide": "top",
+      "fromEnd": "none",
+      "toEnd": "none",
+      "label": "专项",
+      "color": "4"
+    },
+    {
+      "id": "eeb564bb7adb4e0a",
+      "fromNode": "3dae84f1aac24c1c",
+      "toNode": "28f5f72feb622a4c",
+      "fromSide": "bottom",
+      "toSide": "top",
+      "fromEnd": "none",
+      "toEnd": "none",
+      "label": "专项",
+      "color": "4"
+    },
+    {
+      "id": "8605a98fd3d9078f",
+      "fromNode": "3dae84f1aac24c1c",
+      "toNode": "d664f15743659280",
+      "fromSide": "bottom",
+      "toSide": "top",
+      "fromEnd": "none",
+      "toEnd": "none",
+      "label": "专项",
+      "color": "4"
+    }
+  ]
+}

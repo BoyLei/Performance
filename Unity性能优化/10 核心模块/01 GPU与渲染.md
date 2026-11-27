@@ -12,6 +12,23 @@ related: ["[[02 CPU与调度]]", "[[04 纹理与资源]]", "[[07 场景流式与
 
 # 01 GPU与渲染
 
+%% navigation-start %%
+> [!abstract] 本页位置
+> [[00 知识库首页|首页]] → [[图形与表现]] → **01 GPU与渲染**
+> 分别测量 CPU 提交与 GPU 工作，理解合批、剔除与带宽权衡。
+> [[01 GPU与渲染 导图.canvas|打开图谱]] · [[知识体系脑图|完整层级]] · [[模块依赖与关联|关联说明]]
+
+> [!tip]- 本页知识点索引
+> - [[01 GPU与渲染#帧流水线与瓶颈|帧流水线与瓶颈]]
+> - [[01 GPU与渲染#SRP Batcher与GPU Instancing|SRP Batcher与GPU Instancing]]
+> - [[01 GPU与渲染#CBUFFER与MPB|CBUFFER与MPB]]
+> - [[01 GPU与渲染#可见性与LOD|可见性与LOD]]
+> - [[01 GPU与渲染#透明与带宽|透明与带宽]]
+> - [[01 GPU与渲染#Shader Pass与Variant|Shader Pass与Variant]]
+> - [[01 GPU与渲染#关键字的使用边界（Q032–Q033、Q098）|关键字的使用边界（Q032–Q033、Q098）]]
+
+%% navigation-end %%
+
 本模块为归纳后的原理与实践建议。历史原问集中在 [[历史问题索引]]；无原文支持的扩展不视为用户问过。
 
 ## 帧流水线与瓶颈

@@ -1,0 +1,141 @@
+{
+  "canvases": [
+    {
+      "file": "01 GPU与渲染 导图.canvas",
+      "type": "canvas",
+      "nodes": 9,
+      "edges": 8,
+      "scale": 0.582070707070707,
+      "visibleCards": 9
+    },
+    {
+      "file": "02 CPU与调度 导图.canvas",
+      "type": "canvas",
+      "nodes": 8,
+      "edges": 7,
+      "scale": 0.7417538213998391,
+      "visibleCards": 8
+    },
+    {
+      "file": "03 内存与GC 导图.canvas",
+      "type": "canvas",
+      "nodes": 6,
+      "edges": 5,
+      "scale": 0.865013774104683,
+      "visibleCards": 6
+    },
+    {
+      "file": "04 纹理与资源 导图.canvas",
+      "type": "canvas",
+      "nodes": 6,
+      "edges": 5,
+      "scale": 0.865013774104683,
+      "visibleCards": 6
+    },
+    {
+      "file": "05 Addressables与AssetBundle 导图.canvas",
+      "type": "canvas",
+      "nodes": 9,
+      "edges": 8,
+      "scale": 0.7417538213998391,
+      "visibleCards": 9
+    },
+    {
+      "file": "06 异步与生命周期 导图.canvas",
+      "type": "canvas",
+      "nodes": 10,
+      "edges": 9,
+      "scale": 0.6008471814923427,
+      "visibleCards": 10
+    },
+    {
+      "file": "07 场景流式与地形 导图.canvas",
+      "type": "canvas",
+      "nodes": 10,
+      "edges": 9,
+      "scale": 0.6008471814923427,
+      "visibleCards": 10
+    },
+    {
+      "file": "08 UGUI与交互 导图.canvas",
+      "type": "canvas",
+      "nodes": 8,
+      "edges": 7,
+      "scale": 0.7194693718298869,
+      "visibleCards": 8
+    },
+    {
+      "file": "09 角色动画与特效 导图.canvas",
+      "type": "canvas",
+      "nodes": 8,
+      "edges": 7,
+      "scale": 0.7194693718298869,
+      "visibleCards": 8
+    },
+    {
+      "file": "10 MMO架构与网络 导图.canvas",
+      "type": "canvas",
+      "nodes": 9,
+      "edges": 8,
+      "scale": 0.6008471814923427,
+      "visibleCards": 9
+    },
+    {
+      "file": "专项实践地图.canvas",
+      "type": "canvas",
+      "nodes": 8,
+      "edges": 7,
+      "scale": 0.6138807429130009,
+      "visibleCards": 8
+    },
+    {
+      "file": "学习总览.canvas",
+      "type": "canvas",
+      "nodes": 19,
+      "edges": 4,
+      "scale": 0.5385934819897084,
+      "visibleCards": 19
+    },
+    {
+      "file": "模块依赖图.canvas",
+      "type": "canvas",
+      "nodes": 25,
+      "edges": 12,
+      "scale": 0.453071253071253,
+      "visibleCards": 25
+    }
+  ],
+  "canvasJump": "Unity性能优化/图谱/01 GPU与渲染 导图.canvas",
+  "topicJump": {
+    "file": "Unity性能优化/10 核心模块/01 GPU与渲染.md",
+    "state": {
+      "file": "Unity性能优化/10 核心模块/01 GPU与渲染.md",
+      "mode": "source",
+      "source": false
+    }
+  },
+  "queries": [
+    {
+      "name": "全部待完成",
+      "count": 93,
+      "checked": 0
+    },
+    {
+      "name": "P0 优先",
+      "count": 32,
+      "checked": 0
+    },
+    {
+      "name": "已完成",
+      "count": 0,
+      "checked": 0
+    },
+    {
+      "name": "待核实讨论状态",
+      "count": 34,
+      "checked": 0
+    }
+  ],
+  "homeUnresolved": 0,
+  "pageErrors": []
+}

@@ -1,0 +1,163 @@
+{
+  "nodes": [
+    {
+      "id": "44e0a7163dacec43",
+      "type": "text",
+      "text": "# [[09 角色动画与特效]]\n\n动画、蒙皮、粒子与预热按场景密度测量。\n\n[[学习总览.canvas|返回总览]] · [[模块依赖与关联|跨模块联系]]",
+      "x": 250,
+      "y": 0,
+      "width": 900,
+      "height": 180,
+      "color": "6"
+    },
+    {
+      "id": "adff8c93508d7b1c",
+      "type": "text",
+      "text": "## 角色成本分解\n\n[[09 角色动画与特效#角色成本分解|打开知识点 →]]",
+      "x": 0,
+      "y": 290,
+      "width": 600,
+      "height": 150,
+      "color": "5"
+    },
+    {
+      "id": "cb0abc165536cb13",
+      "type": "text",
+      "text": "## 动画LOD与状态机\n\n[[09 角色动画与特效#动画LOD与状态机|打开知识点 →]]",
+      "x": 720,
+      "y": 290,
+      "width": 600,
+      "height": 150,
+      "color": "5"
+    },
+    {
+      "id": "2e5f7bd241216f66",
+      "type": "text",
+      "text": "## 粒子对象池\n\n[[09 角色动画与特效#粒子对象池|打开知识点 →]]",
+      "x": 0,
+      "y": 520,
+      "width": 600,
+      "height": 150,
+      "color": "5"
+    },
+    {
+      "id": "29a3ccdbee402a62",
+      "type": "text",
+      "text": "## 特效预算\n\n[[09 角色动画与特效#特效预算|打开知识点 →]]",
+      "x": 720,
+      "y": 520,
+      "width": 600,
+      "height": 150,
+      "color": "5"
+    },
+    {
+      "id": "95e8b5167d819d3c",
+      "type": "text",
+      "text": "## Prewarm、Simulate 与复用状态（Q103–Q105）\n\n[[09 角色动画与特效#Prewarm、Simulate 与复用状态（Q103–Q105）|打开知识点 →]]",
+      "x": 0,
+      "y": 750,
+      "width": 600,
+      "height": 150,
+      "color": "5"
+    },
+    {
+      "id": "71674773330343c9",
+      "type": "text",
+      "text": "## Timeline 与池的回收协议（Q102）\n\n[[09 角色动画与特效#Timeline 与池的回收协议（Q102）|打开知识点 →]]",
+      "x": 720,
+      "y": 750,
+      "width": 600,
+      "height": 150,
+      "color": "5"
+    },
+    {
+      "id": "9408fae90ded8287",
+      "type": "text",
+      "text": "## 专项实践\n\n[[GPU Mask与铺地火焰]]\n\n[[专项实践地图.canvas|打开专项地图]]",
+      "x": 250,
+      "y": 980,
+      "width": 900,
+      "height": 185,
+      "color": "2"
+    }
+  ],
+  "edges": [
+    {
+      "id": "444d7cee8adeacfc",
+      "fromNode": "44e0a7163dacec43",
+      "toNode": "adff8c93508d7b1c",
+      "fromSide": "left",
+      "toSide": "left",
+      "fromEnd": "none",
+      "toEnd": "none",
+      "label": "知识点",
+      "color": "4"
+    },
+    {
+      "id": "f846e65531bed63b",
+      "fromNode": "44e0a7163dacec43",
+      "toNode": "cb0abc165536cb13",
+      "fromSide": "right",
+      "toSide": "right",
+      "fromEnd": "none",
+      "toEnd": "none",
+      "label": "知识点",
+      "color": "4"
+    },
+    {
+      "id": "99594f9f394f9c31",
+      "fromNode": "44e0a7163dacec43",
+      "toNode": "2e5f7bd241216f66",
+      "fromSide": "left",
+      "toSide": "left",
+      "fromEnd": "none",
+      "toEnd": "none",
+      "label": "知识点",
+      "color": "4"
+    },
+    {
+      "id": "bed342424cd5b575",
+      "fromNode": "44e0a7163dacec43",
+      "toNode": "29a3ccdbee402a62",
+      "fromSide": "right",
+      "toSide": "right",
+      "fromEnd": "none",
+      "toEnd": "none",
+      "label": "知识点",
+      "color": "4"
+    },
+    {
+      "id": "f9e7de41552d58e8",
+      "fromNode": "44e0a7163dacec43",
+      "toNode": "95e8b5167d819d3c",
+      "fromSide": "left",
+      "toSide": "left",
+      "fromEnd": "none",
+      "toEnd": "none",
+      "label": "知识点",
+      "color": "4"
+    },
+    {
+      "id": "2d9bdff52ee66793",
+      "fromNode": "44e0a7163dacec43",
+      "toNode": "71674773330343c9",
+      "fromSide": "right",
+      "toSide": "right",
+      "fromEnd": "none",
+      "toEnd": "none",
+      "label": "知识点",
+      "color": "4"
+    },
+    {
+      "id": "36e673c9b16a0998",
+      "fromNode": "44e0a7163dacec43",
+      "toNode": "9408fae90ded8287",
+      "fromSide": "bottom",
+      "toSide": "top",
+      "fromEnd": "none",
+      "toEnd": "none",
+      "label": "应用场景",
+      "color": "4"
+    }
+  ]
+}

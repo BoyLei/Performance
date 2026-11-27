@@ -1,0 +1,163 @@
+{
+  "nodes": [
+    {
+      "id": "c567c537fbee48bc",
+      "type": "text",
+      "text": "# [[02 CPU与调度]]\n\n理解 PlayerLoop、固定步进和计时器的阶段与延迟。\n\n[[学习总览.canvas|返回总览]] · [[模块依赖与关联|跨模块联系]]",
+      "x": 250,
+      "y": 0,
+      "width": 900,
+      "height": 180,
+      "color": "6"
+    },
+    {
+      "id": "16468e9880e39f1a",
+      "type": "text",
+      "text": "## PlayerLoop与Update\n\n[[02 CPU与调度#PlayerLoop与Update|打开知识点 →]]",
+      "x": 0,
+      "y": 290,
+      "width": 600,
+      "height": 150,
+      "color": "5"
+    },
+    {
+      "id": "4008faae79695bbb",
+      "type": "text",
+      "text": "## FixedUpdate与时间\n\n[[02 CPU与调度#FixedUpdate与时间|打开知识点 →]]",
+      "x": 720,
+      "y": 290,
+      "width": 600,
+      "height": 150,
+      "color": "5"
+    },
+    {
+      "id": "a461affe691013d2",
+      "type": "text",
+      "text": "## Timer系统\n\n[[02 CPU与调度#Timer系统|打开知识点 →]]",
+      "x": 0,
+      "y": 520,
+      "width": 600,
+      "height": 150,
+      "color": "5"
+    },
+    {
+      "id": "f42f87af2f787690",
+      "type": "text",
+      "text": "## Jobs与Burst\n\n[[02 CPU与调度#Jobs与Burst|打开知识点 →]]",
+      "x": 720,
+      "y": 520,
+      "width": 600,
+      "height": 150,
+      "color": "5"
+    },
+    {
+      "id": "ba1c5ad42c3a5ee7",
+      "type": "text",
+      "text": "## 固定步与 PlayerLoop 字段纠错（Q024–Q025、Q082）\n\n[[02 CPU与调度#固定步与 PlayerLoop 字段纠错（Q024–Q025、Q082）|打开知识点 →]]",
+      "x": 0,
+      "y": 750,
+      "width": 600,
+      "height": 150,
+      "color": "5"
+    },
+    {
+      "id": "ca7dd177ff0801d5",
+      "type": "text",
+      "text": "## 最小堆 Timer 的实现契约（Q079–Q081）\n\n[[02 CPU与调度#最小堆 Timer 的实现契约（Q079–Q081）|打开知识点 →]]",
+      "x": 720,
+      "y": 750,
+      "width": 600,
+      "height": 150,
+      "color": "5"
+    },
+    {
+      "id": "171c7bffba238eb6",
+      "type": "text",
+      "text": "## InvokeRepeating 的生命周期边界（Q085）\n\n[[02 CPU与调度#InvokeRepeating 的生命周期边界（Q085）|打开知识点 →]]",
+      "x": 0,
+      "y": 980,
+      "width": 600,
+      "height": 150,
+      "color": "5"
+    }
+  ],
+  "edges": [
+    {
+      "id": "0107718d5edde025",
+      "fromNode": "c567c537fbee48bc",
+      "toNode": "16468e9880e39f1a",
+      "fromSide": "left",
+      "toSide": "left",
+      "fromEnd": "none",
+      "toEnd": "none",
+      "label": "知识点",
+      "color": "4"
+    },
+    {
+      "id": "7723036407e97ee5",
+      "fromNode": "c567c537fbee48bc",
+      "toNode": "4008faae79695bbb",
+      "fromSide": "right",
+      "toSide": "right",
+      "fromEnd": "none",
+      "toEnd": "none",
+      "label": "知识点",
+      "color": "4"
+    },
+    {
+      "id": "67c84f920855e776",
+      "fromNode": "c567c537fbee48bc",
+      "toNode": "a461affe691013d2",
+      "fromSide": "left",
+      "toSide": "left",
+      "fromEnd": "none",
+      "toEnd": "none",
+      "label": "知识点",
+      "color": "4"
+    },
+    {
+      "id": "2e535432b11567e2",
+      "fromNode": "c567c537fbee48bc",
+      "toNode": "f42f87af2f787690",
+      "fromSide": "right",
+      "toSide": "right",
+      "fromEnd": "none",
+      "toEnd": "none",
+      "label": "知识点",
+      "color": "4"
+    },
+    {
+      "id": "970fe3456eff460f",
+      "fromNode": "c567c537fbee48bc",
+      "toNode": "ba1c5ad42c3a5ee7",
+      "fromSide": "left",
+      "toSide": "left",
+      "fromEnd": "none",
+      "toEnd": "none",
+      "label": "知识点",
+      "color": "4"
+    },
+    {
+      "id": "1912c0f0dfb4fcb4",
+      "fromNode": "c567c537fbee48bc",
+      "toNode": "ca7dd177ff0801d5",
+      "fromSide": "right",
+      "toSide": "right",
+      "fromEnd": "none",
+      "toEnd": "none",
+      "label": "知识点",
+      "color": "4"
+    },
+    {
+      "id": "f7f3d567ee52f039",
+      "fromNode": "c567c537fbee48bc",
+      "toNode": "171c7bffba238eb6",
+      "fromSide": "left",
+      "toSide": "left",
+      "fromEnd": "none",
+      "toEnd": "none",
+      "label": "知识点",
+      "color": "4"
+    }
+  ]
+}

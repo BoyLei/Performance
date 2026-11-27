@@ -1,0 +1,184 @@
+{
+  "nodes": [
+    {
+      "id": "0b15af8f122b8f79",
+      "type": "text",
+      "text": "# [[10 MMO架构与网络]]\n\n网络 tick、消息消费和客户端表现共享实际帧预算。\n\n[[学习总览.canvas|返回总览]] · [[模块依赖与关联|跨模块联系]]",
+      "x": 250,
+      "y": 0,
+      "width": 900,
+      "height": 180,
+      "color": "6"
+    },
+    {
+      "id": "dc2b89e0da472ea5",
+      "type": "text",
+      "text": "## 关注范围与表现\n\n[[10 MMO架构与网络#关注范围与表现|打开知识点 →]]",
+      "x": 0,
+      "y": 290,
+      "width": 600,
+      "height": 150,
+      "color": "5"
+    },
+    {
+      "id": "9bc21b721364dd28",
+      "type": "text",
+      "text": "## 同步与插值\n\n[[10 MMO架构与网络#同步与插值|打开知识点 →]]",
+      "x": 720,
+      "y": 290,
+      "width": 600,
+      "height": 150,
+      "color": "5"
+    },
+    {
+      "id": "8aa7a88cacf2942a",
+      "type": "text",
+      "text": "## TCP消息边界\n\n[[10 MMO架构与网络#TCP消息边界|打开知识点 →]]",
+      "x": 0,
+      "y": 520,
+      "width": 600,
+      "height": 150,
+      "color": "5"
+    },
+    {
+      "id": "64ea89e018450ed8",
+      "type": "text",
+      "text": "## 大规模预算\n\n[[10 MMO架构与网络#大规模预算|打开知识点 →]]",
+      "x": 720,
+      "y": 520,
+      "width": 600,
+      "height": 150,
+      "color": "5"
+    },
+    {
+      "id": "1e2ed0b97786e6ee",
+      "type": "text",
+      "text": "## 消息积压与队列所有权（Q107）\n\n[[10 MMO架构与网络#消息积压与队列所有权（Q107）|打开知识点 →]]",
+      "x": 0,
+      "y": 750,
+      "width": 600,
+      "height": 150,
+      "color": "5"
+    },
+    {
+      "id": "096983ad676aa81a",
+      "type": "text",
+      "text": "## TCP ACK、重试与切网（Q108–Q110）\n\n[[10 MMO架构与网络#TCP ACK、重试与切网（Q108–Q110）|打开知识点 →]]",
+      "x": 720,
+      "y": 750,
+      "width": 600,
+      "height": 150,
+      "color": "5"
+    },
+    {
+      "id": "bd2e6096a7a58a87",
+      "type": "text",
+      "text": "## 客户端与服务器时钟（Q111）\n\n[[10 MMO架构与网络#客户端与服务器时钟（Q111）|打开知识点 →]]",
+      "x": 0,
+      "y": 980,
+      "width": 600,
+      "height": 150,
+      "color": "5"
+    },
+    {
+      "id": "c5c0d341df14898e",
+      "type": "text",
+      "text": "## 专项实践\n\n[[架构线程与代码实践]]\n\n[[专项实践地图.canvas|打开专项地图]]",
+      "x": 250,
+      "y": 1210,
+      "width": 900,
+      "height": 185,
+      "color": "2"
+    }
+  ],
+  "edges": [
+    {
+      "id": "6f2950d65b36af81",
+      "fromNode": "0b15af8f122b8f79",
+      "toNode": "dc2b89e0da472ea5",
+      "fromSide": "left",
+      "toSide": "left",
+      "fromEnd": "none",
+      "toEnd": "none",
+      "label": "知识点",
+      "color": "4"
+    },
+    {
+      "id": "92caecb0716978fd",
+      "fromNode": "0b15af8f122b8f79",
+      "toNode": "9bc21b721364dd28",
+      "fromSide": "right",
+      "toSide": "right",
+      "fromEnd": "none",
+      "toEnd": "none",
+      "label": "知识点",
+      "color": "4"
+    },
+    {
+      "id": "823f46f1b816db52",
+      "fromNode": "0b15af8f122b8f79",
+      "toNode": "8aa7a88cacf2942a",
+      "fromSide": "left",
+      "toSide": "left",
+      "fromEnd": "none",
+      "toEnd": "none",
+      "label": "知识点",
+      "color": "4"
+    },
+    {
+      "id": "6b8c0c8af5ec7d17",
+      "fromNode": "0b15af8f122b8f79",
+      "toNode": "64ea89e018450ed8",
+      "fromSide": "right",
+      "toSide": "right",
+      "fromEnd": "none",
+      "toEnd": "none",
+      "label": "知识点",
+      "color": "4"
+    },
+    {
+      "id": "b991a22cd355cd6a",
+      "fromNode": "0b15af8f122b8f79",
+      "toNode": "1e2ed0b97786e6ee",
+      "fromSide": "left",
+      "toSide": "left",
+      "fromEnd": "none",
+      "toEnd": "none",
+      "label": "知识点",
+      "color": "4"
+    },
+    {
+      "id": "d0a07cf802b403d3",
+      "fromNode": "0b15af8f122b8f79",
+      "toNode": "096983ad676aa81a",
+      "fromSide": "right",
+      "toSide": "right",
+      "fromEnd": "none",
+      "toEnd": "none",
+      "label": "知识点",
+      "color": "4"
+    },
+    {
+      "id": "b0621072c227778d",
+      "fromNode": "0b15af8f122b8f79",
+      "toNode": "bd2e6096a7a58a87",
+      "fromSide": "left",
+      "toSide": "left",
+      "fromEnd": "none",
+      "toEnd": "none",
+      "label": "知识点",
+      "color": "4"
+    },
+    {
+      "id": "0d3e3dda48251044",
+      "fromNode": "0b15af8f122b8f79",
+      "toNode": "c5c0d341df14898e",
+      "fromSide": "bottom",
+      "toSide": "top",
+      "fromEnd": "none",
+      "toEnd": "none",
+      "label": "应用场景",
+      "color": "4"
+    }
+  ]
+}

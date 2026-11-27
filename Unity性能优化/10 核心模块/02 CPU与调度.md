@@ -12,6 +12,23 @@ related: ["[[03 内存与GC]]", "[[06 异步与生命周期]]", "[[10 MMO架构�
 
 # 02 CPU与调度
 
+%% navigation-start %%
+> [!abstract] 本页位置
+> [[00 知识库首页|首页]] → [[运行时与内存]] → **02 CPU与调度**
+> 理解 PlayerLoop、固定步进和计时器的阶段与延迟。
+> [[02 CPU与调度 导图.canvas|打开图谱]] · [[知识体系脑图|完整层级]] · [[模块依赖与关联|关联说明]]
+
+> [!tip]- 本页知识点索引
+> - [[02 CPU与调度#PlayerLoop与Update|PlayerLoop与Update]]
+> - [[02 CPU与调度#FixedUpdate与时间|FixedUpdate与时间]]
+> - [[02 CPU与调度#Timer系统|Timer系统]]
+> - [[02 CPU与调度#Jobs与Burst|Jobs与Burst]]
+> - [[02 CPU与调度#固定步与 PlayerLoop 字段纠错（Q024–Q025、Q082）|固定步与 PlayerLoop 字段纠错（Q024–Q025、Q082）]]
+> - [[02 CPU与调度#最小堆 Timer 的实现契约（Q079–Q081）|最小堆 Timer 的实现契约（Q079–Q081）]]
+> - [[02 CPU与调度#InvokeRepeating 的生命周期边界（Q085）|InvokeRepeating 的生命周期边界（Q085）]]
+
+%% navigation-end %%
+
 本模块为归纳后的原理与实践建议。历史原问集中在 [[历史问题索引]]；无原文支持的扩展不视为用户问过。
 
 ## PlayerLoop与Update

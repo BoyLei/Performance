@@ -111,7 +111,7 @@ for p in sorted(VAULT.glob('*.md')):
             if m:
                 level = len(m[1])
                 require(level % 4 == 0, f'{p.name}: invalid list indentation')
-                require(previous == -1 or level <= previous + 4, f'{p.name}: skipped hierarchy level')
+                require(level == 0 if previous == -1 else level <= previous + 4, f'{p.name}: skipped hierarchy level')
                 previous = level
             elif line.strip():
                 previous = -1

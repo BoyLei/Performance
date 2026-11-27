@@ -1,0 +1,388 @@
+{
+  "nodes": [
+    {
+      "id": "9b399157dd0fd59e",
+      "type": "text",
+      "x": 0,
+      "y": 0,
+      "width": 2000,
+      "height": 180,
+      "color": "6",
+      "text": "# 模块之间怎样相互影响\n\n[[模块依赖与关联|逐条说明 A01–A12]] · [[学习总览.canvas|包含层级另看总览]]\n\n每一行是一条独立的知识支撑或成本约束；橙色箭头不是代码调用、继承或强制学习顺序。"
+    },
+    {
+      "id": "400b1d5d93fe99ff",
+      "type": "text",
+      "text": "### A01 · 成本约束\n\n[[02 CPU与调度]]\n\nCPU 提交与 GPU 执行重叠，分别测关键路径。",
+      "x": 0,
+      "y": 300,
+      "width": 440,
+      "height": 200,
+      "color": "5"
+    },
+    {
+      "id": "52226c311514147d",
+      "type": "text",
+      "text": "### 理解或约束的目标\n\n[[01 GPU与渲染]]\n\n[[模块依赖与关联|查看关系说明]]",
+      "x": 600,
+      "y": 300,
+      "width": 440,
+      "height": 200,
+      "color": "4"
+    },
+    {
+      "id": "0cb28bde30418455",
+      "type": "text",
+      "text": "### A02 · 成本约束\n\n[[03 内存与GC]]\n\n分配和 GC 可推迟调度，零分配不等于零尖峰。",
+      "x": 1100,
+      "y": 300,
+      "width": 440,
+      "height": 200,
+      "color": "5"
+    },
+    {
+      "id": "26ef5d5625cb40a7",
+      "type": "text",
+      "text": "### 理解或约束的目标\n\n[[02 CPU与调度]]\n\n[[模块依赖与关联|查看关系说明]]",
+      "x": 1700,
+      "y": 300,
+      "width": 440,
+      "height": 200,
+      "color": "4"
+    },
+    {
+      "id": "d7fd6743dab97918",
+      "type": "text",
+      "text": "### A03 · 机制支撑\n\n[[02 CPU与调度]]\n\nPlayerLoop 阶段解释部分异步恢复时机。",
+      "x": 0,
+      "y": 570,
+      "width": 440,
+      "height": 200,
+      "color": "5"
+    },
+    {
+      "id": "4fd902fea46e8e67",
+      "type": "text",
+      "text": "### 理解或约束的目标\n\n[[06 异步与生命周期]]\n\n[[模块依赖与关联|查看关系说明]]",
+      "x": 600,
+      "y": 570,
+      "width": 440,
+      "height": 200,
+      "color": "4"
+    },
+    {
+      "id": "8491538559f45726",
+      "type": "text",
+      "text": "### A04 · 拥有权\n\n[[03 内存与GC]]\n\n托管引用、原生资源和句柄分别配对。",
+      "x": 1100,
+      "y": 570,
+      "width": 440,
+      "height": 200,
+      "color": "5"
+    },
+    {
+      "id": "38a8d7dc9303128a",
+      "type": "text",
+      "text": "### 理解或约束的目标\n\n[[05 Addressables与AssetBundle]]\n\n[[模块依赖与关联|查看关系说明]]",
+      "x": 1700,
+      "y": 570,
+      "width": 440,
+      "height": 200,
+      "color": "4"
+    },
+    {
+      "id": "f5f08d2ff0423cb9",
+      "type": "text",
+      "text": "### A05 · 生命周期\n\n[[06 异步与生命周期]]\n\n取消等待后仍须处理迟到句柄与释放责任。",
+      "x": 0,
+      "y": 840,
+      "width": 440,
+      "height": 200,
+      "color": "5"
+    },
+    {
+      "id": "11f6a42fd69791d1",
+      "type": "text",
+      "text": "### 理解或约束的目标\n\n[[05 Addressables与AssetBundle]]\n\n[[模块依赖与关联|查看关系说明]]",
+      "x": 600,
+      "y": 840,
+      "width": 440,
+      "height": 200,
+      "color": "4"
+    },
+    {
+      "id": "562e2db93c9ef344",
+      "type": "text",
+      "text": "### A06 · 加载支撑\n\n[[05 Addressables与AssetBundle]]\n\n资源加载与句柄生命周期支撑分块流送。",
+      "x": 1100,
+      "y": 840,
+      "width": 440,
+      "height": 200,
+      "color": "5"
+    },
+    {
+      "id": "7835af30ca565753",
+      "type": "text",
+      "text": "### 理解或约束的目标\n\n[[07 场景流式与地形]]\n\n[[模块依赖与关联|查看关系说明]]",
+      "x": 1700,
+      "y": 840,
+      "width": 440,
+      "height": 200,
+      "color": "4"
+    },
+    {
+      "id": "e8158923827915bf",
+      "type": "text",
+      "text": "### A07 · 带宽与驻留\n\n[[04 纹理与资源]]\n\n纹理格式和 Mip 影响驻留与采样，不按压缩比推断耗时。",
+      "x": 0,
+      "y": 1110,
+      "width": 440,
+      "height": 200,
+      "color": "5"
+    },
+    {
+      "id": "01a92ad667693a52",
+      "type": "text",
+      "text": "### 理解或约束的目标\n\n[[01 GPU与渲染]]\n\n[[模块依赖与关联|查看关系说明]]",
+      "x": 600,
+      "y": 1110,
+      "width": 440,
+      "height": 200,
+      "color": "4"
+    },
+    {
+      "id": "95d47e798327a19a",
+      "type": "text",
+      "text": "### A08 · 集合边界\n\n[[07 场景流式与地形]]\n\n加载候选决定驻留，剔除决定绘制，二者不等同。",
+      "x": 1100,
+      "y": 1110,
+      "width": 440,
+      "height": 200,
+      "color": "5"
+    },
+    {
+      "id": "dd174d3721d40926",
+      "type": "text",
+      "text": "### 理解或约束的目标\n\n[[01 GPU与渲染]]\n\n[[模块依赖与关联|查看关系说明]]",
+      "x": 1700,
+      "y": 1110,
+      "width": 440,
+      "height": 200,
+      "color": "4"
+    },
+    {
+      "id": "536cef798eaf492d",
+      "type": "text",
+      "text": "### A09 · 渲染约束\n\n[[01 GPU与渲染]]\n\nUI 批次、透明覆盖和 RT 合成仍消耗提交与像素预算。",
+      "x": 0,
+      "y": 1380,
+      "width": 440,
+      "height": 200,
+      "color": "5"
+    },
+    {
+      "id": "c1ddd81ba1637711",
+      "type": "text",
+      "text": "### 理解或约束的目标\n\n[[08 UGUI与交互]]\n\n[[模块依赖与关联|查看关系说明]]",
+      "x": 600,
+      "y": 1380,
+      "width": 440,
+      "height": 200,
+      "color": "4"
+    },
+    {
+      "id": "f0b0a206c920d7f1",
+      "type": "text",
+      "text": "### A10 · 状态收尾\n\n[[06 异步与生命周期]]\n\n回收与迟到异步结果须恢复粒子、动画状态。",
+      "x": 1100,
+      "y": 1380,
+      "width": 440,
+      "height": 200,
+      "color": "5"
+    },
+    {
+      "id": "44d835a06088ce7e",
+      "type": "text",
+      "text": "### 理解或约束的目标\n\n[[09 角色动画与特效]]\n\n[[模块依赖与关联|查看关系说明]]",
+      "x": 1700,
+      "y": 1380,
+      "width": 440,
+      "height": 200,
+      "color": "4"
+    },
+    {
+      "id": "e58bd502833cda44",
+      "type": "text",
+      "text": "### A11 · 消费预算\n\n[[02 CPU与调度]]\n\n消息消费与逻辑 tick 受主线程预算约束。",
+      "x": 0,
+      "y": 1650,
+      "width": 440,
+      "height": 200,
+      "color": "5"
+    },
+    {
+      "id": "e060484837f3bb7e",
+      "type": "text",
+      "text": "### 理解或约束的目标\n\n[[10 MMO架构与网络]]\n\n[[模块依赖与关联|查看关系说明]]",
+      "x": 600,
+      "y": 1650,
+      "width": 440,
+      "height": 200,
+      "color": "4"
+    },
+    {
+      "id": "8bfa645c4fac05d1",
+      "type": "text",
+      "text": "### A12 · 范围协同\n\n[[07 场景流式与地形]]\n\n客户端流送与服务器关注范围相关，但不是同一集合。",
+      "x": 1100,
+      "y": 1650,
+      "width": 440,
+      "height": 200,
+      "color": "5"
+    },
+    {
+      "id": "eec0e8222f473866",
+      "type": "text",
+      "text": "### 理解或约束的目标\n\n[[10 MMO架构与网络]]\n\n[[模块依赖与关联|查看关系说明]]",
+      "x": 1700,
+      "y": 1650,
+      "width": 440,
+      "height": 200,
+      "color": "4"
+    }
+  ],
+  "edges": [
+    {
+      "id": "f5bb1e883fe070e2",
+      "fromNode": "400b1d5d93fe99ff",
+      "toNode": "52226c311514147d",
+      "fromSide": "right",
+      "toSide": "left",
+      "fromEnd": "none",
+      "toEnd": "arrow",
+      "label": "A01",
+      "color": "2"
+    },
+    {
+      "id": "b98d7f05d54e27b7",
+      "fromNode": "0cb28bde30418455",
+      "toNode": "26ef5d5625cb40a7",
+      "fromSide": "right",
+      "toSide": "left",
+      "fromEnd": "none",
+      "toEnd": "arrow",
+      "label": "A02",
+      "color": "2"
+    },
+    {
+      "id": "604eed848786b085",
+      "fromNode": "d7fd6743dab97918",
+      "toNode": "4fd902fea46e8e67",
+      "fromSide": "right",
+      "toSide": "left",
+      "fromEnd": "none",
+      "toEnd": "arrow",
+      "label": "A03",
+      "color": "2"
+    },
+    {
+      "id": "52a036de8dd85731",
+      "fromNode": "8491538559f45726",
+      "toNode": "38a8d7dc9303128a",
+      "fromSide": "right",
+      "toSide": "left",
+      "fromEnd": "none",
+      "toEnd": "arrow",
+      "label": "A04",
+      "color": "2"
+    },
+    {
+      "id": "b90b81236ee05588",
+      "fromNode": "f5f08d2ff0423cb9",
+      "toNode": "11f6a42fd69791d1",
+      "fromSide": "right",
+      "toSide": "left",
+      "fromEnd": "none",
+      "toEnd": "arrow",
+      "label": "A05",
+      "color": "2"
+    },
+    {
+      "id": "93acbc580aec53a2",
+      "fromNode": "562e2db93c9ef344",
+      "toNode": "7835af30ca565753",
+      "fromSide": "right",
+      "toSide": "left",
+      "fromEnd": "none",
+      "toEnd": "arrow",
+      "label": "A06",
+      "color": "2"
+    },
+    {
+      "id": "984a628b7f0d45e5",
+      "fromNode": "e8158923827915bf",
+      "toNode": "01a92ad667693a52",
+      "fromSide": "right",
+      "toSide": "left",
+      "fromEnd": "none",
+      "toEnd": "arrow",
+      "label": "A07",
+      "color": "2"
+    },
+    {
+      "id": "56668c7099c9d5e0",
+      "fromNode": "95d47e798327a19a",
+      "toNode": "dd174d3721d40926",
+      "fromSide": "right",
+      "toSide": "left",
+      "fromEnd": "none",
+      "toEnd": "arrow",
+      "label": "A08",
+      "color": "2"
+    },
+    {
+      "id": "87f123e7117eca11",
+      "fromNode": "536cef798eaf492d",
+      "toNode": "c1ddd81ba1637711",
+      "fromSide": "right",
+      "toSide": "left",
+      "fromEnd": "none",
+      "toEnd": "arrow",
+      "label": "A09",
+      "color": "2"
+    },
+    {
+      "id": "9f4ca76d229d5567",
+      "fromNode": "f0b0a206c920d7f1",
+      "toNode": "44d835a06088ce7e",
+      "fromSide": "right",
+      "toSide": "left",
+      "fromEnd": "none",
+      "toEnd": "arrow",
+      "label": "A10",
+      "color": "2"
+    },
+    {
+      "id": "480d48e443d3e965",
+      "fromNode": "e58bd502833cda44",
+      "toNode": "e060484837f3bb7e",
+      "fromSide": "right",
+      "toSide": "left",
+      "fromEnd": "none",
+      "toEnd": "arrow",
+      "label": "A11",
+      "color": "2"
+    },
+    {
+      "id": "56be795eb5e31b6e",
+      "fromNode": "8bfa645c4fac05d1",
+      "toNode": "eec0e8222f473866",
+      "fromSide": "right",
+      "toSide": "left",
+      "fromEnd": "none",
+      "toEnd": "arrow",
+      "label": "A12",
+      "color": "2"
+    }
+  ]
+}

@@ -1,0 +1,163 @@
+{
+  "nodes": [
+    {
+      "id": "4957c192d7495231",
+      "type": "text",
+      "text": "# [[08 UGUI与交互]]\n\n布局、图形重建、批次和输入各有职责。\n\n[[学习总览.canvas|返回总览]] · [[模块依赖与关联|跨模块联系]]",
+      "x": 250,
+      "y": 0,
+      "width": 900,
+      "height": 180,
+      "color": "6"
+    },
+    {
+      "id": "d3602b407958adb0",
+      "type": "text",
+      "text": "## 重建链路\n\n[[08 UGUI与交互#重建链路|打开知识点 →]]",
+      "x": 0,
+      "y": 290,
+      "width": 600,
+      "height": 150,
+      "color": "5"
+    },
+    {
+      "id": "468615e99a0d6252",
+      "type": "text",
+      "text": "## Canvas拆分\n\n[[08 UGUI与交互#Canvas拆分|打开知识点 →]]",
+      "x": 720,
+      "y": 290,
+      "width": 600,
+      "height": 150,
+      "color": "5"
+    },
+    {
+      "id": "169b04026034dee6",
+      "type": "text",
+      "text": "## 点击与射线\n\n[[08 UGUI与交互#点击与射线|打开知识点 →]]",
+      "x": 0,
+      "y": 520,
+      "width": 600,
+      "height": 150,
+      "color": "5"
+    },
+    {
+      "id": "b8f09d6d6eea97d8",
+      "type": "text",
+      "text": "## CanvasGroup与隐藏\n\n[[08 UGUI与交互#CanvasGroup与隐藏|打开知识点 →]]",
+      "x": 720,
+      "y": 520,
+      "width": 600,
+      "height": 150,
+      "color": "5"
+    },
+    {
+      "id": "5c14d75b156b0263",
+      "type": "text",
+      "text": "## 架构与列表\n\n[[08 UGUI与交互#架构与列表|打开知识点 →]]",
+      "x": 0,
+      "y": 750,
+      "width": 600,
+      "height": 150,
+      "color": "5"
+    },
+    {
+      "id": "03aafcab16948535",
+      "type": "text",
+      "text": "## 移动、尺寸与 UI 技术选型纠错（Q054–Q067）\n\n[[08 UGUI与交互#移动、尺寸与 UI 技术选型纠错（Q054–Q067）|打开知识点 →]]",
+      "x": 720,
+      "y": 750,
+      "width": 600,
+      "height": 150,
+      "color": "5"
+    },
+    {
+      "id": "dc4ee5aad11fbfa2",
+      "type": "text",
+      "text": "## 专项实践\n\n[[UGUI架构与事件顺序]]\n\n[[专项实践地图.canvas|打开专项地图]]",
+      "x": 250,
+      "y": 980,
+      "width": 900,
+      "height": 185,
+      "color": "2"
+    }
+  ],
+  "edges": [
+    {
+      "id": "2852ca42d9202f98",
+      "fromNode": "4957c192d7495231",
+      "toNode": "d3602b407958adb0",
+      "fromSide": "left",
+      "toSide": "left",
+      "fromEnd": "none",
+      "toEnd": "none",
+      "label": "知识点",
+      "color": "4"
+    },
+    {
+      "id": "42b613ae55423b66",
+      "fromNode": "4957c192d7495231",
+      "toNode": "468615e99a0d6252",
+      "fromSide": "right",
+      "toSide": "right",
+      "fromEnd": "none",
+      "toEnd": "none",
+      "label": "知识点",
+      "color": "4"
+    },
+    {
+      "id": "5df2cd5ea51d940b",
+      "fromNode": "4957c192d7495231",
+      "toNode": "169b04026034dee6",
+      "fromSide": "left",
+      "toSide": "left",
+      "fromEnd": "none",
+      "toEnd": "none",
+      "label": "知识点",
+      "color": "4"
+    },
+    {
+      "id": "8af8d73f254469b1",
+      "fromNode": "4957c192d7495231",
+      "toNode": "b8f09d6d6eea97d8",
+      "fromSide": "right",
+      "toSide": "right",
+      "fromEnd": "none",
+      "toEnd": "none",
+      "label": "知识点",
+      "color": "4"
+    },
+    {
+      "id": "7696ed7b2c34f869",
+      "fromNode": "4957c192d7495231",
+      "toNode": "5c14d75b156b0263",
+      "fromSide": "left",
+      "toSide": "left",
+      "fromEnd": "none",
+      "toEnd": "none",
+      "label": "知识点",
+      "color": "4"
+    },
+    {
+      "id": "48a7e6ae868f3146",
+      "fromNode": "4957c192d7495231",
+      "toNode": "03aafcab16948535",
+      "fromSide": "right",
+      "toSide": "right",
+      "fromEnd": "none",
+      "toEnd": "none",
+      "label": "知识点",
+      "color": "4"
+    },
+    {
+      "id": "8d0011e5ba883d78",
+      "fromNode": "4957c192d7495231",
+      "toNode": "dc4ee5aad11fbfa2",
+      "fromSide": "bottom",
+      "toSide": "top",
+      "fromEnd": "none",
+      "toEnd": "none",
+      "label": "应用场景",
+      "color": "4"
+    }
+  ]
+}

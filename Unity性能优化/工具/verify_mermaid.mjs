@@ -15,7 +15,10 @@ mermaid.initialize({startOnLoad: false, securityLevel: 'strict'});
 const vault = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 let count = 0;
 const errors = [];
-for (const name of fs.readdirSync(vault).filter(name => name.endsWith('.md')).sort()) {
+function walk(dir) {
+  return fs.readdirSync(dir, {withFileTypes: true}).flatMap(e => e.isDirectory() ? walk(path.join(dir, e.name)) : e.name.endsWith('.md') ? [path.relative(vault, path.join(dir, e.name))] : []);
+}
+for (const name of walk(vault).sort()) {
   const source = fs.readFileSync(path.join(vault, name), 'utf8');
   for (const [, code] of source.matchAll(/^```mermaid\s*\n([\s\S]*?)^```\s*$/gm)) {
     count++;

@@ -1,0 +1,121 @@
+{
+  "nodes": [
+    {
+      "id": "4d0d3b30e010cc0b",
+      "type": "text",
+      "text": "# [[04 纹理与资源]]\n\n压缩、Mip、驻留和资源预算不能互相替代。\n\n[[学习总览.canvas|返回总览]] · [[模块依赖与关联|跨模块联系]]",
+      "x": 250,
+      "y": 0,
+      "width": 900,
+      "height": 180,
+      "color": "6"
+    },
+    {
+      "id": "acd09b0274a64150",
+      "type": "text",
+      "text": "## ASTC与纹理内存\n\n[[04 纹理与资源#ASTC与纹理内存|打开知识点 →]]",
+      "x": 0,
+      "y": 290,
+      "width": 600,
+      "height": 150,
+      "color": "5"
+    },
+    {
+      "id": "001cd5f91f7b0f60",
+      "type": "text",
+      "text": "## 格式回退与平台\n\n[[04 纹理与资源#格式回退与平台|打开知识点 →]]",
+      "x": 720,
+      "y": 290,
+      "width": 600,
+      "height": 150,
+      "color": "5"
+    },
+    {
+      "id": "c9549e4e8f2ecacf",
+      "type": "text",
+      "text": "## SpriteAtlas与合图\n\n[[04 纹理与资源#SpriteAtlas与合图|打开知识点 →]]",
+      "x": 0,
+      "y": 520,
+      "width": 600,
+      "height": 150,
+      "color": "5"
+    },
+    {
+      "id": "93f1571462c2c5ed",
+      "type": "text",
+      "text": "## Mip与资源预算\n\n[[04 纹理与资源#Mip与资源预算|打开知识点 →]]",
+      "x": 720,
+      "y": 520,
+      "width": 600,
+      "height": 150,
+      "color": "5"
+    },
+    {
+      "id": "0c40734127df6a95",
+      "type": "text",
+      "text": "## ASTC 数值与流送粒度（Q037–Q040）\n\n[[04 纹理与资源#ASTC 数值与流送粒度（Q037–Q040）|打开知识点 →]]",
+      "x": 0,
+      "y": 750,
+      "width": 600,
+      "height": 150,
+      "color": "5"
+    }
+  ],
+  "edges": [
+    {
+      "id": "1f9be6e10ed9429e",
+      "fromNode": "4d0d3b30e010cc0b",
+      "toNode": "acd09b0274a64150",
+      "fromSide": "left",
+      "toSide": "left",
+      "fromEnd": "none",
+      "toEnd": "none",
+      "label": "知识点",
+      "color": "4"
+    },
+    {
+      "id": "81b40a3805fffeba",
+      "fromNode": "4d0d3b30e010cc0b",
+      "toNode": "001cd5f91f7b0f60",
+      "fromSide": "right",
+      "toSide": "right",
+      "fromEnd": "none",
+      "toEnd": "none",
+      "label": "知识点",
+      "color": "4"
+    },
+    {
+      "id": "db660f23b02400b1",
+      "fromNode": "4d0d3b30e010cc0b",
+      "toNode": "c9549e4e8f2ecacf",
+      "fromSide": "left",
+      "toSide": "left",
+      "fromEnd": "none",
+      "toEnd": "none",
+      "label": "知识点",
+      "color": "4"
+    },
+    {
+      "id": "41e511718adb85f7",
+      "fromNode": "4d0d3b30e010cc0b",
+      "toNode": "93f1571462c2c5ed",
+      "fromSide": "right",
+      "toSide": "right",
+      "fromEnd": "none",
+      "toEnd": "none",
+      "label": "知识点",
+      "color": "4"
+    },
+    {
+      "id": "aeb790fe48432165",
+      "fromNode": "4d0d3b30e010cc0b",
+      "toNode": "0c40734127df6a95",
+      "fromSide": "left",
+      "toSide": "left",
+      "fromEnd": "none",
+      "toEnd": "none",
+      "label": "知识点",
+      "color": "4"
+    }
+  ]
+}

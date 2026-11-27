@@ -1,0 +1,240 @@
+{
+  "nodes": [
+    {
+      "id": "1982bc2b13e2ffad",
+      "type": "group",
+      "x": 0,
+      "y": 290,
+      "width": 500,
+      "height": 1040,
+      "label": "图形与表现",
+      "color": "2"
+    },
+    {
+      "id": "1545dc1d27436520",
+      "type": "group",
+      "x": 540,
+      "y": 290,
+      "width": 500,
+      "height": 1040,
+      "label": "运行时与内存",
+      "color": "3"
+    },
+    {
+      "id": "3b0eaf82c121462c",
+      "type": "group",
+      "x": 1080,
+      "y": 290,
+      "width": 500,
+      "height": 1040,
+      "label": "资源与世界",
+      "color": "4"
+    },
+    {
+      "id": "5c46817fe56cadf8",
+      "type": "group",
+      "x": 1620,
+      "y": 290,
+      "width": 500,
+      "height": 1040,
+      "label": "架构与联网",
+      "color": "5"
+    },
+    {
+      "id": "bd445c462b7eebbc",
+      "type": "text",
+      "text": "# Unity 性能优化\n\n[[00 知识库首页|首页]] · [[知识体系脑图|完整展开]]\n\n连线表示“包含”；跨模块支撑见 [[模块依赖图.canvas|关系图]]。",
+      "x": 620,
+      "y": 0,
+      "width": 940,
+      "height": 180,
+      "color": "6"
+    },
+    {
+      "id": "7aaf3a3d98b23c40",
+      "type": "text",
+      "text": "## [[图形与表现]]\n\n提交、像素、UI 与角色的可见画面成本。",
+      "x": 30,
+      "y": 340,
+      "width": 440,
+      "height": 140,
+      "color": "2"
+    },
+    {
+      "id": "daa3ddc469795eef",
+      "type": "text",
+      "text": "## [[01 GPU与渲染]]\n\n分别测量 CPU 提交与 GPU 工作，理解合批、剔除与带宽权衡。\n\n[[01 GPU与渲染 导图.canvas|继续展开 →]]",
+      "x": 30,
+      "y": 550,
+      "width": 440,
+      "height": 190,
+      "color": "2"
+    },
+    {
+      "id": "5db40de304d532bd",
+      "type": "text",
+      "text": "## [[08 UGUI与交互]]\n\n布局、图形重建、批次和输入各有职责。\n\n[[08 UGUI与交互 导图.canvas|继续展开 →]]",
+      "x": 30,
+      "y": 800,
+      "width": 440,
+      "height": 190,
+      "color": "2"
+    },
+    {
+      "id": "b585e84980b60e6d",
+      "type": "text",
+      "text": "## [[09 角色动画与特效]]\n\n动画、蒙皮、粒子与预热按场景密度测量。\n\n[[09 角色动画与特效 导图.canvas|继续展开 →]]",
+      "x": 30,
+      "y": 1050,
+      "width": 440,
+      "height": 190,
+      "color": "2"
+    },
+    {
+      "id": "d446fc8c25808520",
+      "type": "text",
+      "text": "## [[运行时与内存]]\n\n主线程、调度、分配与异步生命周期。",
+      "x": 570,
+      "y": 340,
+      "width": 440,
+      "height": 140,
+      "color": "3"
+    },
+    {
+      "id": "5938919e95103ef9",
+      "type": "text",
+      "text": "## [[02 CPU与调度]]\n\n理解 PlayerLoop、固定步进和计时器的阶段与延迟。\n\n[[02 CPU与调度 导图.canvas|继续展开 →]]",
+      "x": 570,
+      "y": 550,
+      "width": 440,
+      "height": 190,
+      "color": "3"
+    },
+    {
+      "id": "9de4d48389c3cdd5",
+      "type": "text",
+      "text": "## [[03 内存与GC]]\n\n区分托管分配、原生资源与引用拥有者。\n\n[[03 内存与GC 导图.canvas|继续展开 →]]",
+      "x": 570,
+      "y": 800,
+      "width": 440,
+      "height": 190,
+      "color": "3"
+    },
+    {
+      "id": "0ff08dc842f522d1",
+      "type": "text",
+      "text": "## [[06 异步与生命周期]]\n\nawait 不等于后台线程，取消不等于底层操作终止。\n\n[[06 异步与生命周期 导图.canvas|继续展开 →]]",
+      "x": 570,
+      "y": 1050,
+      "width": 440,
+      "height": 190,
+      "color": "3"
+    },
+    {
+      "id": "9a56b924ed5c3441",
+      "type": "text",
+      "text": "## [[资源与世界]]\n\n纹理预算、资源拥有权与世界流送。",
+      "x": 1110,
+      "y": 340,
+      "width": 440,
+      "height": 140,
+      "color": "4"
+    },
+    {
+      "id": "0c82318c2e3e9395",
+      "type": "text",
+      "text": "## [[04 纹理与资源]]\n\n压缩、Mip、驻留和资源预算不能互相替代。\n\n[[04 纹理与资源 导图.canvas|继续展开 →]]",
+      "x": 1110,
+      "y": 550,
+      "width": 440,
+      "height": 190,
+      "color": "4"
+    },
+    {
+      "id": "526e51956e61ef49",
+      "type": "text",
+      "text": "## [[05 Addressables与AssetBundle]]\n\n按版本核实加载链，配对句柄与资源释放。\n\n[[05 Addressables与AssetBundle 导图.canvas|继续展开 →]]",
+      "x": 1110,
+      "y": 800,
+      "width": 440,
+      "height": 190,
+      "color": "4"
+    },
+    {
+      "id": "753eef2fd9443c31",
+      "type": "text",
+      "text": "## [[07 场景流式与地形]]\n\n分开管理空间候选、加载状态、驻留与可见集合。\n\n[[07 场景流式与地形 导图.canvas|继续展开 →]]",
+      "x": 1110,
+      "y": 1050,
+      "width": 440,
+      "height": 190,
+      "color": "4"
+    },
+    {
+      "id": "a2b0103e73d24d82",
+      "type": "text",
+      "text": "## [[架构与联网]]\n\n业务组织、消息消费与同步策略。",
+      "x": 1650,
+      "y": 340,
+      "width": 440,
+      "height": 140,
+      "color": "5"
+    },
+    {
+      "id": "066a09f9d129239e",
+      "type": "text",
+      "text": "## [[10 MMO架构与网络]]\n\n网络 tick、消息消费和客户端表现共享实际帧预算。\n\n[[10 MMO架构与网络 导图.canvas|继续展开 →]]",
+      "x": 1650,
+      "y": 550,
+      "width": 440,
+      "height": 190,
+      "color": "5"
+    }
+  ],
+  "edges": [
+    {
+      "id": "f4fcadf0d76a0d48",
+      "fromNode": "bd445c462b7eebbc",
+      "toNode": "1982bc2b13e2ffad",
+      "fromSide": "bottom",
+      "toSide": "top",
+      "fromEnd": "none",
+      "toEnd": "none",
+      "label": "包含",
+      "color": "4"
+    },
+    {
+      "id": "662808e3286ad001",
+      "fromNode": "bd445c462b7eebbc",
+      "toNode": "1545dc1d27436520",
+      "fromSide": "bottom",
+      "toSide": "top",
+      "fromEnd": "none",
+      "toEnd": "none",
+      "label": "包含",
+      "color": "4"
+    },
+    {
+      "id": "0730c7a49eb70903",
+      "fromNode": "bd445c462b7eebbc",
+      "toNode": "3b0eaf82c121462c",
+      "fromSide": "bottom",
+      "toSide": "top",
+      "fromEnd": "none",
+      "toEnd": "none",
+      "label": "包含",
+      "color": "4"
+    },
+    {
+      "id": "42b4e599d3417919",
+      "fromNode": "bd445c462b7eebbc",
+      "toNode": "5c46817fe56cadf8",
+      "fromSide": "bottom",
+      "toSide": "top",
+      "fromEnd": "none",
+      "toEnd": "none",
+      "label": "包含",
+      "color": "4"
+    }
+  ]
+}

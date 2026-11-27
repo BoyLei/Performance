@@ -1,0 +1,184 @@
+{
+  "nodes": [
+    {
+      "id": "34ac89dcfee0084d",
+      "type": "text",
+      "text": "# [[01 GPU与渲染]]\n\n分别测量 CPU 提交与 GPU 工作，理解合批、剔除与带宽权衡。\n\n[[学习总览.canvas|返回总览]] · [[模块依赖与关联|跨模块联系]]",
+      "x": 250,
+      "y": 0,
+      "width": 900,
+      "height": 180,
+      "color": "6"
+    },
+    {
+      "id": "a3fa0541ee4bdef1",
+      "type": "text",
+      "text": "## 帧流水线与瓶颈\n\n[[01 GPU与渲染#帧流水线与瓶颈|打开知识点 →]]",
+      "x": 0,
+      "y": 290,
+      "width": 600,
+      "height": 150,
+      "color": "5"
+    },
+    {
+      "id": "a7253d388f7baeaa",
+      "type": "text",
+      "text": "## SRP Batcher与GPU Instancing\n\n[[01 GPU与渲染#SRP Batcher与GPU Instancing|打开知识点 →]]",
+      "x": 720,
+      "y": 290,
+      "width": 600,
+      "height": 150,
+      "color": "5"
+    },
+    {
+      "id": "e2b4c69701afd2e0",
+      "type": "text",
+      "text": "## CBUFFER与MPB\n\n[[01 GPU与渲染#CBUFFER与MPB|打开知识点 →]]",
+      "x": 0,
+      "y": 520,
+      "width": 600,
+      "height": 150,
+      "color": "5"
+    },
+    {
+      "id": "5cab4efb51200af0",
+      "type": "text",
+      "text": "## 可见性与LOD\n\n[[01 GPU与渲染#可见性与LOD|打开知识点 →]]",
+      "x": 720,
+      "y": 520,
+      "width": 600,
+      "height": 150,
+      "color": "5"
+    },
+    {
+      "id": "3066f2da9e7562ab",
+      "type": "text",
+      "text": "## 透明与带宽\n\n[[01 GPU与渲染#透明与带宽|打开知识点 →]]",
+      "x": 0,
+      "y": 750,
+      "width": 600,
+      "height": 150,
+      "color": "5"
+    },
+    {
+      "id": "8df75d8b406286eb",
+      "type": "text",
+      "text": "## Shader Pass与Variant\n\n[[01 GPU与渲染#Shader Pass与Variant|打开知识点 →]]",
+      "x": 720,
+      "y": 750,
+      "width": 600,
+      "height": 150,
+      "color": "5"
+    },
+    {
+      "id": "2b77b6f42752dba9",
+      "type": "text",
+      "text": "## 关键字的使用边界（Q032–Q033、Q098）\n\n[[01 GPU与渲染#关键字的使用边界（Q032–Q033、Q098）|打开知识点 →]]",
+      "x": 0,
+      "y": 980,
+      "width": 600,
+      "height": 150,
+      "color": "5"
+    },
+    {
+      "id": "1dd5eab806d4aa96",
+      "type": "text",
+      "text": "## 专项实践\n\n[[场景UI分辨率与RT带宽]]\n\n[[GPU Driven与虚拟化技术]]\n\n[[专项实践地图.canvas|打开专项地图]]",
+      "x": 250,
+      "y": 1210,
+      "width": 900,
+      "height": 230,
+      "color": "2"
+    }
+  ],
+  "edges": [
+    {
+      "id": "82a62d936c74d2a4",
+      "fromNode": "34ac89dcfee0084d",
+      "toNode": "a3fa0541ee4bdef1",
+      "fromSide": "left",
+      "toSide": "left",
+      "fromEnd": "none",
+      "toEnd": "none",
+      "label": "知识点",
+      "color": "4"
+    },
+    {
+      "id": "24bcdb43009384c8",
+      "fromNode": "34ac89dcfee0084d",
+      "toNode": "a7253d388f7baeaa",
+      "fromSide": "right",
+      "toSide": "right",
+      "fromEnd": "none",
+      "toEnd": "none",
+      "label": "知识点",
+      "color": "4"
+    },
+    {
+      "id": "231da490cbbd3899",
+      "fromNode": "34ac89dcfee0084d",
+      "toNode": "e2b4c69701afd2e0",
+      "fromSide": "left",
+      "toSide": "left",
+      "fromEnd": "none",
+      "toEnd": "none",
+      "label": "知识点",
+      "color": "4"
+    },
+    {
+      "id": "b0b36389184d15f5",
+      "fromNode": "34ac89dcfee0084d",
+      "toNode": "5cab4efb51200af0",
+      "fromSide": "right",
+      "toSide": "right",
+      "fromEnd": "none",
+      "toEnd": "none",
+      "label": "知识点",
+      "color": "4"
+    },
+    {
+      "id": "b76fbe07bd675063",
+      "fromNode": "34ac89dcfee0084d",
+      "toNode": "3066f2da9e7562ab",
+      "fromSide": "left",
+      "toSide": "left",
+      "fromEnd": "none",
+      "toEnd": "none",
+      "label": "知识点",
+      "color": "4"
+    },
+    {
+      "id": "d79609ff87edb08e",
+      "fromNode": "34ac89dcfee0084d",
+      "toNode": "8df75d8b406286eb",
+      "fromSide": "right",
+      "toSide": "right",
+      "fromEnd": "none",
+      "toEnd": "none",
+      "label": "知识点",
+      "color": "4"
+    },
+    {
+      "id": "5b866d6eb73b8a85",
+      "fromNode": "34ac89dcfee0084d",
+      "toNode": "2b77b6f42752dba9",
+      "fromSide": "left",
+      "toSide": "left",
+      "fromEnd": "none",
+      "toEnd": "none",
+      "label": "知识点",
+      "color": "4"
+    },
+    {
+      "id": "7f0ac994a8b12962",
+      "fromNode": "34ac89dcfee0084d",
+      "toNode": "1dd5eab806d4aa96",
+      "fromSide": "bottom",
+      "toSide": "top",
+      "fromEnd": "none",
+      "toEnd": "none",
+      "label": "应用场景",
+      "color": "4"
+    }
+  ]
+}

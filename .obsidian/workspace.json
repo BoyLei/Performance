@@ -8,35 +8,20 @@
         "type": "tabs",
         "children": [
           {
-            "id": "a57122a61de35850",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "专注力示例/番茄工作法.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "番茄工作法"
-            }
-          },
-          {
             "id": "7819d34b1a5726a8",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "2026-11-26.md",
+                "file": "Unity性能优化/03 内存与GC.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "2026-11-26"
+              "title": "03 内存与GC"
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "vertical"
@@ -114,7 +99,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "专注力示例/专注力.md",
+                "file": "Unity性能优化/03 内存与GC.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -176,7 +161,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "专注力示例/专注力.md",
+                "file": "Unity性能优化/03 内存与GC.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
@@ -185,12 +170,12 @@
               "title": "大纲"
             }
           }
-        ]
+        ],
+        "currentTab": 4
       }
     ],
     "direction": "horizontal",
-    "width": 300,
-    "collapsed": true
+    "width": 300
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -205,16 +190,39 @@
   },
   "active": "7819d34b1a5726a8",
   "lastOpenFiles": [
-    "2026-11-26.md",
-    "专注力示例/番茄工作法.md",
-    "未命名 1.base",
     "未命名.base",
-    "专注力示例/专注力.md",
+    "Unity性能优化/GPU Mask与铺地火焰.md",
+    "Unity性能优化/UGUI架构与事件顺序.md",
+    "2026-11-26.md",
+    "云端交接/00 云端继续前先读.md",
+    "云端交接/历史会话原文/03 分支 · 讲解 Unity 内存原理.md",
+    "云端交接/历史会话原文/02 场景的流式加载.md",
+    "云端交接/历史会话原文/01 分支 · 场景的流式加载.md",
     "欢迎.md",
-    "file:/Users/dl/Documents/deepseek-harness/default-workspace/dsh-credit-turn/README.md",
-    "file:/Users/dl/Documents/deepseek-harness/default-workspace/dsh-keep-awake/README.md",
-    "专注力示例/主题地图.md",
-    "专注力示例/干扰清单.md",
+    "云端交接/缺口及补齐办法.md",
+    "未命名 1.base",
+    "专注力示例/专注力.md",
+    "Unity性能优化/00 知识库首页.md",
+    "Unity性能优化/01 GPU与渲染.md",
+    "Unity性能优化/参考资料与版本边界.md",
+    "专注力示例/番茄工作法.md",
+    "Unity性能优化/文件核验报告.md",
+    "云端交接/历史会话原文/36 xLua Lua.txt 处理解释.md",
+    "云端交接/历史会话原文/35 Streambuilder减少GC原因.md",
+    "云端交接/历史会话原文/34 Unity GPU Instancing 示例.md",
+    "云端交接/历史会话原文/33 MVP 和 MVC 区别.md",
+    "云端交接/历史会话原文/32 层级状态机原理.md",
+    "云端交接/历史会话原文/31 取消Unity场景加载.md",
+    "云端交接/历史会话原文/30 Unity yield return 讲解.md",
+    "云端交接/历史会话原文/29 INotifyPropertyChanged简介.md",
+    "云端交接/历史会话原文/28 TCP 粘包解析.md",
+    "云端交接/历史会话原文/27 Unity 粒子系统对象池.md",
+    "云端交接/文件清单与校验.json",
+    "云端交接/当前聊天可见消息.json",
+    "云端交接/历史会话返回原文.json",
+    "云端交接/历史会话原文",
+    "云端交接",
+    "Unity性能优化",
     "专注力示例"
   ]
 }
